@@ -1,0 +1,2135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuoteWizard Auto Insurance Rates</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px 20px;
+            min-height: 100vh;
+        }
+
+        .widget-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .widget-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .widget-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .widget-header h2 {
+            font-size: 32px;
+            margin-bottom: 12px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .widget-header p {
+            font-size: 16px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .savings-badge {
+            display: inline-block;
+            background: #00d4aa;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(0, 212, 170, 0.4);
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .filters-section {
+            padding: 35px 30px;
+            background: linear-gradient(to bottom, #f8f9ff 0%, #ffffff 100%);
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-subtitle {
+            font-size: 14px;
+            color: #718096;
+            margin-bottom: 25px;
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .filter-label-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: #2d3748;
+            font-size: 14px;
+        }
+
+        .tooltip-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: help;
+            position: relative;
+        }
+
+        .tooltip-icon:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2d3748;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 400;
+            white-space: nowrap;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            line-height: 1.4;
+        }
+
+        .tooltip-text::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: #2d3748;
+        }
+
+        .filter-group select {
+            padding: 14px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 14px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: #2d3748;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23667eea' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 40px;
+        }
+
+        .filter-group select:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .filter-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        }
+
+        .rates-section {
+            padding: 35px 30px;
+            background: white;
+        }
+
+        .rates-header {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .rates-header h3 {
+            color: #2d3748;
+            font-size: 24px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .rates-header p {
+            color: #718096;
+            font-size: 15px;
+        }
+
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            color: #667eea;
+        }
+
+        .loading-spinner.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid #f3f4f6;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .rates-table-wrapper {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .rates-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 14px;
+        }
+
+        .rates-table thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .rates-table th {
+            padding: 18px 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .rates-table tbody tr {
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .rates-table tbody tr:hover {
+            background: linear-gradient(to right, #f8f9ff 0%, #ffffff 100%);
+            transform: scale(1.01);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+        }
+
+        .rates-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .rates-table td {
+            padding: 20px;
+            color: #2d3748;
+            font-size: 14px;
+        }
+
+        .company-name {
+            font-weight: 700;
+            color: #2d3748;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .company-logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .rate-monthly {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00d4aa 0%, #00a67e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .rate-annual {
+            color: #718096;
+            font-size: 13px;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        .rate-cell {
+            text-align: right;
+        }
+
+        .coverage-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .coverage-minimum {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            color: #d63031;
+            box-shadow: 0 2px 8px rgba(253, 203, 110, 0.3);
+        }
+
+        .coverage-standard {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+            box-shadow: 0 2px 8px rgba(9, 132, 227, 0.3);
+        }
+
+        .coverage-full {
+            background: linear-gradient(135deg, #55efc4 0%, #00b894 100%);
+            color: white;
+            box-shadow: 0 2px 8px rgba(0, 184, 148, 0.3);
+        }
+
+        .disclaimer {
+            padding: 25px 30px;
+            background: linear-gradient(135deg, #fff9e6 0%, #fffbf0 100%);
+            border-top: 3px solid #ffd700;
+            font-size: 13px;
+            color: #856404;
+            line-height: 1.7;
+            display: flex;
+            align-items: start;
+            gap: 12px;
+        }
+
+        .disclaimer-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .top-rated-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #2d3748;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .star-rating {
+            color: #ffc107;
+            font-size: 14px;
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8f9ff;
+        }
+
+        .info-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+        }
+
+        .info-card-icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .info-card-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+
+        .info-card-text {
+            font-size: 12px;
+            color: #718096;
+            line-height: 1.5;
+        }
+
+        /* Mr. Wizard Chat Assistant */
+        .wizard-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .wizard-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            animation: wizardFloat 3s ease-in-out infinite;
+            position: relative;
+            overflow: visible;
+        }
+
+        .wizard-avatar:hover {
+            transform: scale(1.2) rotate(10deg);
+            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.6);
+        }
+
+        .wizard-avatar:active {
+            transform: scale(0.95);
+        }
+
+        .wizard-face {
+            font-size: 50px;
+            position: relative;
+            animation: wizardBounce 2s ease-in-out infinite;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        @keyframes wizardFloat {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-15px) rotate(-5deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(0deg);
+            }
+            75% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+        }
+
+        @keyframes wizardBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .wizard-pulse {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgba(102, 126, 234, 0.4);
+            animation: pulse-ring 2s ease-out infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.8);
+                opacity: 0;
+            }
+        }
+
+        .wizard-sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: sparkleFloat 3s ease-in-out infinite;
+            box-shadow: 0 0 10px #ffd700;
+        }
+
+        .sparkle:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .sparkle:nth-child(2) {
+            top: 20%;
+            right: 10%;
+            animation-delay: 0.5s;
+        }
+
+        .sparkle:nth-child(3) {
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 1s;
+        }
+
+        .sparkle:nth-child(4) {
+            bottom: 10%;
+            right: 15%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes sparkleFloat {
+            0%, 100% {
+                transform: translateY(0) scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(-30px) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .wizard-eyes {
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .eye {
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            position: relative;
+            animation: blink 4s infinite;
+        }
+
+        .eye::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #2d3748;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: eyeMove 3s infinite;
+        }
+
+        @keyframes blink {
+            0%, 96%, 100% {
+                height: 8px;
+            }
+            98% {
+                height: 1px;
+            }
+        }
+
+        @keyframes eyeMove {
+            0%, 100% {
+                left: 50%;
+            }
+            25% {
+                left: 60%;
+            }
+            75% {
+                left: 40%;
+            }
+        }
+
+        /* Comic Book Style Speech Bubble */
+        .wizard-speech-bubble {
+            position: absolute;
+            bottom: 120%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: white;
+            padding: 16px 20px;
+            border-radius: 20px;
+            border: 4px solid #2d3748;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25), inset 0 2px 0 rgba(255,255,255,0.8);
+            font-size: 15px;
+            font-weight: 700;
+            color: #2d3748;
+            min-width: 200px;
+            max-width: 320px;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1001;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive, sans-serif;
+            line-height: 1.4;
+        }
+
+        /* Comic book tail pointing to wizard's mouth */
+        .wizard-speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 20px solid #2d3748;
+        }
+
+        .wizard-speech-bubble::before {
+            content: '';
+            position: absolute;
+            bottom: -13px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 16px solid transparent;
+            border-right: 16px solid transparent;
+            border-top: 16px solid white;
+            z-index: 1;
+        }
+
+        /* Thought bubble style for internal thoughts */
+        .wizard-speech-bubble.thought {
+            border-radius: 50%;
+            padding: 20px;
+            border-style: dashed;
+            font-style: italic;
+        }
+
+        .wizard-speech-bubble.thought::after,
+        .wizard-speech-bubble.thought::before {
+            display: none;
+        }
+
+        .wizard-speech-bubble.thought .thought-bubbles {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .thought-bubble {
+            position: absolute;
+            background: white;
+            border: 3px solid #2d3748;
+            border-radius: 50%;
+        }
+
+        .thought-bubble:nth-child(1) {
+            width: 20px;
+            height: 20px;
+            bottom: 0;
+            left: -10px;
+        }
+
+        .thought-bubble:nth-child(2) {
+            width: 12px;
+            height: 12px;
+            bottom: -15px;
+            left: -20px;
+        }
+
+        .thought-bubble:nth-child(3) {
+            width: 8px;
+            height: 8px;
+            bottom: -25px;
+            left: -25px;
+        }
+
+        .wizard-speech-bubble.active {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+            animation: bubblePop 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes bubblePop {
+            0% {
+                transform: translateX(-50%) translateY(10px) scale(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-5px) scale(1.1);
+            }
+            100% {
+                transform: translateX(-50%) translateY(0) scale(1);
+            }
+        }
+
+        /* Emphasis effects for speech */
+        .wizard-speech-bubble .emphasis {
+            color: #667eea;
+            font-size: 1.2em;
+            animation: textPulse 0.5s ease-in-out infinite;
+        }
+
+        @keyframes textPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Chat history toggle button */
+        .chat-history-toggle {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .chat-history-toggle:hover {
+            transform: scale(1.15) rotate(15deg);
+            box-shadow: 0 6px 16px rgba(102, 126, 234, 0.6);
+        }
+
+        .chat-history-toggle:active {
+            transform: scale(0.95);
+        }
+
+        .wizard-wand {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 30px;
+            transform: rotate(-45deg);
+            animation: wandWave 2s ease-in-out infinite;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        @keyframes wandWave {
+            0%, 100% {
+                transform: rotate(-45deg);
+            }
+            50% {
+                transform: rotate(-25deg);
+            }
+        }
+
+        .wizard-notification {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 13px;
+            font-weight: 700;
+            animation: notificationPulse 1s ease-in-out infinite;
+            box-shadow: 0 4px 12px rgba(255, 71, 87, 0.5);
+            border: 3px solid white;
+        }
+
+        @keyframes notificationPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .wizard-trail {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            animation: trailFade 1s ease-out forwards;
+        }
+
+        @keyframes trailFade {
+            0% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+        }
+
+        .wizard-chat-window {
+            position: absolute;
+            bottom: 120px;
+            right: 0;
+            width: 400px;
+            max-height: 600px;
+            background: white;
+            border-radius: 20px;
+            border: 4px solid #2d3748;
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            animation: slideInUp 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 999;
+        }
+
+        .wizard-chat-window.active {
+            display: flex;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Comic book style header */
+        .wizard-chat-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 4px solid #2d3748;
+            position: relative;
+        }
+
+        .wizard-chat-header::before {
+            content: '💬 CHAT HISTORY';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #ffd700;
+            color: #2d3748;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 900;
+            border: 2px solid #2d3748;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+
+
+        .wizard-chat-avatar {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .wizard-chat-info h3 {
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .wizard-chat-info p {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .wizard-close-btn {
+            margin-left: auto;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .wizard-close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .wizard-chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f8f9ff;
+            max-height: 400px;
+        }
+
+        .wizard-message {
+            margin-bottom: 16px;
+            animation: messageSlideIn 0.4s ease-out;
+        }
+
+        @keyframes messageSlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .wizard-message.user {
+            text-align: right;
+        }
+
+        .wizard-message.user .message-bubble {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin-left: auto;
+        }
+
+        .message-bubble {
+            display: inline-block;
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            background: white;
+            border: 3px solid #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 14px;
+            line-height: 1.5;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', cursive, sans-serif;
+        }
+
+        .wizard-message.user .message-bubble {
+            border-color: #667eea;
+        }
+
+        .wizard-typing {
+            display: none;
+            padding: 12px 16px;
+            background: white;
+            border-radius: 18px;
+            width: fit-content;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .wizard-typing.active {
+            display: block;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .typing-dots span {
+            width: 8px;
+            height: 8px;
+            background: #667eea;
+            border-radius: 50%;
+            animation: typingDot 1.4s ease-in-out infinite;
+        }
+
+        .typing-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typingDot {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .wizard-quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .quick-reply-btn {
+            background: white;
+            border: 2px solid #667eea;
+            color: #667eea;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quick-reply-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .wizard-chat-input {
+            padding: 16px;
+            border-top: 1px solid #e9ecef;
+            background: white;
+            display: flex;
+            gap: 10px;
+        }
+
+        .wizard-chat-input input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 24px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .wizard-chat-input input:focus {
+            border-color: #667eea;
+        }
+
+        .wizard-send-btn {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .wizard-send-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .widget-header {
+                padding: 30px 20px;
+            }
+
+            .widget-header h2 {
+                font-size: 24px;
+            }
+
+            .filters-section {
+                padding: 25px 20px;
+            }
+
+            .filters-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .rates-section {
+                padding: 25px 20px;
+            }
+
+            .rates-table th,
+            .rates-table td {
+                padding: 12px 10px;
+                font-size: 12px;
+            }
+
+            .rate-monthly {
+                font-size: 20px;
+            }
+
+            .company-name {
+                font-size: 14px;
+            }
+
+            .info-cards {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .tooltip-text {
+                white-space: normal;
+                max-width: 200px;
+            }
+
+            .wizard-container {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .wizard-chat-window {
+                width: calc(100vw - 40px);
+                right: -280px;
+            }
+
+            .wizard-avatar {
+                width: 60px;
+                height: 60px;
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="widget-container">
+        <div class="widget-header">
+            <h2>🚗 Find Your Perfect Auto Insurance Rate</h2>
+            <p>Compare personalized quotes in seconds • Save up to $500/year</p>
+            <div class="savings-badge">💰 Average savings: $427 annually</div>
+        </div>
+
+        <div class="info-cards">
+            <div class="info-card">
+                <div class="info-card-icon">⚡</div>
+                <div class="info-card-title">Instant Quotes</div>
+                <div class="info-card-text">Get rates in real-time based on your profile</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-icon">🔒</div>
+                <div class="info-card-title">100% Secure</div>
+                <div class="info-card-text">Your information is safe and private</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-icon">💵</div>
+                <div class="info-card-title">Save Money</div>
+                <div class="info-card-text">Compare rates to find the best deal</div>
+            </div>
+        </div>
+
+        <div class="filters-section">
+            <div class="section-title">
+                📋 Tell Us About Yourself
+            </div>
+            <div class="section-subtitle">
+                Adjust the filters below to see personalized rates. Each factor affects your premium.
+            </div>
+
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <div class="filter-label-wrapper">
+                        <label for="age">Driver Age</label>
+                        <span class="tooltip-icon">?
+                            <span class="tooltip-text">Younger drivers typically pay more due to less experience</span>
+                        </span>
+                    </div>
+                    <select id="age">
+                        <option value="18">18 years old</option>
+                        <option value="30" selected>30 years old</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <div class="filter-label-wrapper">
+                        <label for="coverage">Coverage Type</label>
+                        <span class="tooltip-icon">?
+                            <span class="tooltip-text">Full coverage includes collision & comprehensive protection</span>
+                        </span>
+                    </div>
+                    <select id="coverage">
+                        <option value="Minimum Coverage">Minimum (Liability Only)</option>
+                        <option value="Full Coverage" selected>Full Coverage</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <div class="filter-label-wrapper">
+                        <label for="credit">Credit Score</label>
+                        <span class="tooltip-icon">?
+                            <span class="tooltip-text">Better credit scores often qualify for lower rates</span>
+                        </span>
+                    </div>
+                    <select id="credit">
+                        <option value="Good" selected>Good Credit</option>
+                        <option value="Poor">Poor Credit</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <div class="filter-label-wrapper">
+                        <label for="speeding">Speeding Tickets</label>
+                        <span class="tooltip-icon">?
+                            <span class="tooltip-text">Recent tickets can increase your premium by 20-30%</span>
+                        </span>
+                    </div>
+                    <select id="speeding">
+                        <option value="0" selected>No Tickets</option>
+                        <option value="1">Yes, I have tickets</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <div class="filter-label-wrapper">
+                        <label for="at_fault">At-Fault Accidents</label>
+                        <span class="tooltip-icon">?
+                            <span class="tooltip-text">At-fault accidents significantly impact your rates</span>
+                        </span>
+                    </div>
+                    <select id="at_fault">
+                        <option value="0" selected>No Accidents</option>
+                        <option value="1">Yes, I had an accident</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <div class="filter-label-wrapper">
+                        <label for="dui">DUI/DWI</label>
+                        <span class="tooltip-icon">?
+                            <span class="tooltip-text">DUI violations can double or triple your insurance costs</span>
+                        </span>
+                    </div>
+                    <select id="dui">
+                        <option value="0" selected>No DUI</option>
+                        <option value="1">Yes, I have a DUI</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="rates-section">
+            <div class="rates-header">
+                <h3>💎 Your Personalized Rates</h3>
+                <p>📍 Plano, TX (75023) • Updated in real-time</p>
+            </div>
+
+            <div class="loading-spinner" id="loading-spinner">
+                <div class="spinner"></div>
+                <p>Calculating your personalized rates...</p>
+            </div>
+
+            <div class="rates-table-wrapper">
+                <table class="rates-table">
+                    <thead>
+                        <tr>
+                            <th>Insurance Carrier</th>
+                            <th>Coverage Level</th>
+                            <th>Annual Premium</th>
+                            <th>Monthly Payment</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rates-body">
+                        <!-- Rates will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            <div class="disclaimer-icon">ℹ️</div>
+            <div>
+                <strong>Important Information:</strong> These rates are sample estimates for Plano, TX (ZIP 75023-75024) based on AAA SoCal data.
+                Actual rates vary by location, carrier, vehicle type, coverage limits, and individual circumstances.
+                These quotes are for illustrative purposes only. Contact insurance providers directly or get personalized quotes for accurate pricing.
+            </div>
+        </div>
+    </div>
+
+    <!-- Mr. Wizard AI Assistant -->
+    <div class="wizard-container" id="wizard-container">
+        <div class="wizard-avatar" id="wizard-avatar">
+            <div class="wizard-pulse"></div>
+            <div class="wizard-pulse" style="animation-delay: 1s;"></div>
+
+            <!-- Sparkles -->
+            <div class="wizard-sparkles">
+                <div class="sparkle"></div>
+                <div class="sparkle"></div>
+                <div class="sparkle"></div>
+                <div class="sparkle"></div>
+            </div>
+
+            <!-- Animated Eyes -->
+            <div class="wizard-eyes">
+                <div class="eye"></div>
+                <div class="eye"></div>
+            </div>
+
+            <!-- Wizard Face -->
+            <div class="wizard-face">🧙‍♂️</div>
+
+            <!-- Magic Wand -->
+            <div class="wizard-wand">✨</div>
+
+            <!-- Comic Book Speech Bubble -->
+            <div class="wizard-speech-bubble" id="wizard-speech">
+                <span>Click me! 👋</span>
+            </div>
+
+            <!-- Chat History Toggle Button -->
+            <div class="chat-history-toggle" id="chat-toggle" onclick="toggleChatHistory()" title="View Chat History">
+                💬
+            </div>
+
+            <div class="wizard-notification" id="wizard-notification" style="display: none;">!</div>
+        </div>
+
+        <div class="wizard-chat-window" id="wizard-chat-window">
+            <div class="wizard-chat-header">
+                <div class="wizard-chat-avatar">🧙‍♂️</div>
+                <div class="wizard-chat-info">
+                    <h3>Mr. Wizard</h3>
+                    <p>Your Insurance Assistant</p>
+                </div>
+                <button class="wizard-close-btn" onclick="toggleWizardChat()">×</button>
+            </div>
+
+            <div class="wizard-chat-messages" id="wizard-messages">
+                <div class="wizard-message">
+                    <div class="message-bubble">
+                        👋 Hi there! I'm Mr. Wizard, your personal insurance guide! I'm here to help you find the perfect coverage.
+                        Feel free to adjust the filters above, and I'll provide personalized insights!
+                    </div>
+                </div>
+            </div>
+
+            <div class="wizard-typing" id="wizard-typing">
+                <div class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <div class="wizard-chat-input">
+                <input type="text" id="wizard-input" placeholder="Ask me anything about insurance..." onkeypress="handleWizardEnter(event)">
+                <button class="wizard-send-btn" onclick="sendWizardMessage()">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Actual rate data from QuoteWizard sample (Plano, TX - AAA SoCal)
+        const rateData = [
+            { coverage: 'Full Coverage', age: 30, credit: 'Poor', speeding: 0, at_fault: 0, dui: 0, premium: 3799 },
+            { coverage: 'Minimum Coverage', age: 18, credit: 'Good', speeding: 0, at_fault: 0, dui: 1, premium: 6846 },
+            { coverage: 'Full Coverage', age: 18, credit: 'Poor', speeding: 0, at_fault: 0, dui: 1, premium: 21582 },
+            { coverage: 'Full Coverage', age: 30, credit: 'Poor', speeding: 0, at_fault: 0, dui: 1, premium: 9763 },
+            { coverage: 'Full Coverage', age: 30, credit: 'Good', speeding: 0, at_fault: 1, dui: 0, premium: 3878 },
+            { coverage: 'Minimum Coverage', age: 30, credit: 'Good', speeding: 0, at_fault: 0, dui: 1, premium: 2595 },
+            { coverage: 'Full Coverage', age: 18, credit: 'Good', speeding: 0, at_fault: 1, dui: 0, premium: 8638 },
+            { coverage: 'Full Coverage', age: 30, credit: 'Poor', speeding: 0, at_fault: 0, dui: 0, premium: 3799 },
+            { coverage: 'Minimum Coverage', age: 18, credit: 'Poor', speeding: 0, at_fault: 0, dui: 1, premium: 11197 },
+            { coverage: 'Minimum Coverage', age: 30, credit: 'Good', speeding: 0, at_fault: 0, dui: 0, premium: 1010 },
+            { coverage: 'Full Coverage', age: 30, credit: 'Good', speeding: 1, at_fault: 0, dui: 0, premium: 3878 },
+            { coverage: 'Minimum Coverage', age: 18, credit: 'Good', speeding: 0, at_fault: 1, dui: 0, premium: 4528 },
+            { coverage: 'Full Coverage', age: 18, credit: 'Good', speeding: 0, at_fault: 0, dui: 0, premium: 5082 },
+            { coverage: 'Full Coverage', age: 18, credit: 'Poor', speeding: 0, at_fault: 0, dui: 1, premium: 21582 },
+            { coverage: 'Full Coverage', age: 18, credit: 'Good', speeding: 1, at_fault: 0, dui: 0, premium: 8638 },
+            { coverage: 'Full Coverage', age: 30, credit: 'Poor', speeding: 1, at_fault: 0, dui: 0, premium: 6459 },
+            { coverage: 'Full Coverage', age: 18, credit: 'Poor', speeding: 1, at_fault: 0, dui: 0, premium: 14277 },
+            { coverage: 'Minimum Coverage', age: 30, credit: 'Poor', speeding: 0, at_fault: 0, dui: 1, premium: 4242 },
+            { coverage: 'Full Coverage', age: 30, credit: 'Good', speeding: 0, at_fault: 0, dui: 0, premium: 2282 },
+            { coverage: 'Full Coverage', age: 18, credit: 'Good', speeding: 1, at_fault: 0, dui: 0, premium: 14277 },
+            { coverage: 'Full Coverage', age: 18, credit: 'Poor', speeding: 0, at_fault: 0, dui: 0, premium: 8398 },
+            { coverage: 'Full Coverage', age: 18, credit: 'Good', speeding: 0, at_fault: 0, dui: 1, premium: 13058 },
+            { coverage: 'Minimum Coverage', age: 30, credit: 'Good', speeding: 0, at_fault: 0, dui: 0, premium: 1010 },
+            { coverage: 'Minimum Coverage', age: 30, credit: 'Good', speeding: 0, at_fault: 1, dui: 0, premium: 1717 },
+            { coverage: 'Minimum Coverage', age: 30, credit: 'Poor', speeding: 1, at_fault: 0, dui: 0, premium: 2807 },
+            { coverage: 'Minimum Coverage', age: 18, credit: 'Good', speeding: 0, at_fault: 0, dui: 1, premium: 6846 },
+            { coverage: 'Minimum Coverage', age: 18, credit: 'Poor', speeding: 0, at_fault: 0, dui: 1, premium: 11197 },
+            { coverage: 'Full Coverage', age: 18, credit: 'Poor', speeding: 1, at_fault: 0, dui: 0, premium: 14277 },
+            { coverage: 'Minimum Coverage', age: 18, credit: 'Good', speeding: 0, at_fault: 0, dui: 0, premium: 2665 },
+            { coverage: 'Minimum Coverage', age: 18, credit: 'Poor', speeding: 0, at_fault: 0, dui: 1, premium: 11197 },
+            { coverage: 'Full Coverage', age: 18, credit: 'Good', speeding: 0, at_fault: 0, dui: 1, premium: 13058 },
+            { coverage: 'Full Coverage', age: 18, credit: 'Good', speeding: 0, at_fault: 0, dui: 0, premium: 5082 },
+            { coverage: 'Minimum Coverage', age: 30, credit: 'Poor', speeding: 0, at_fault: 1, dui: 0, premium: 2807 },
+            { coverage: 'Full Coverage', age: 18, credit: 'Poor', speeding: 0, at_fault: 0, dui: 1, premium: 21582 },
+            { coverage: 'Minimum Coverage', age: 18, credit: 'Good', speeding: 0, at_fault: 0, dui: 1, premium: 6846 },
+            { coverage: 'Minimum Coverage', age: 30, credit: 'Poor', speeding: 0, at_fault: 0, dui: 0, premium: 1652 },
+            { coverage: 'Full Coverage', age: 18, credit: 'Good', speeding: 1, at_fault: 0, dui: 0, premium: 8638 },
+            { coverage: 'Full Coverage', age: 30, credit: 'Good', speeding: 0, at_fault: 1, dui: 0, premium: 3878 }
+        ];
+
+        // Filter rates based on selected criteria
+        function calculateRates() {
+            const age = parseInt(document.getElementById('age').value);
+            const coverage = document.getElementById('coverage').value;
+            const credit = document.getElementById('credit').value;
+            const speeding = parseInt(document.getElementById('speeding').value);
+            const at_fault = parseInt(document.getElementById('at_fault').value);
+            const dui = parseInt(document.getElementById('dui').value);
+
+            // Filter matching rates
+            const matchingRates = rateData.filter(rate =>
+                rate.age === age &&
+                rate.coverage === coverage &&
+                rate.credit === credit &&
+                rate.speeding === speeding &&
+                rate.at_fault === at_fault &&
+                rate.dui === dui
+            );
+
+            // If we have exact matches, use them
+            if (matchingRates.length > 0) {
+                return matchingRates.map(rate => ({
+                    carrier: 'AAA SoCal',
+                    coverage: rate.coverage,
+                    annualPremium: rate.premium,
+                    monthlyPremium: Math.round(rate.premium / 12)
+                }));
+            }
+
+            // Otherwise, find closest match and estimate
+            const closestMatch = rateData.find(rate =>
+                rate.age === age && rate.coverage === coverage
+            ) || rateData[0];
+
+            return [{
+                carrier: 'AAA SoCal',
+                coverage: coverage,
+                annualPremium: closestMatch.premium,
+                monthlyPremium: Math.round(closestMatch.premium / 12)
+            }];
+        }
+
+        // Get coverage badge HTML
+        function getCoverageBadge(coverage) {
+            if (coverage === 'Minimum Coverage') {
+                return '<span class="coverage-badge coverage-minimum">Minimum</span>';
+            } else if (coverage === 'Full Coverage') {
+                return '<span class="coverage-badge coverage-full">Full</span>';
+            }
+            return '<span class="coverage-badge coverage-standard">Standard</span>';
+        }
+
+        // Update the rates table with loading animation
+        function updateRatesTable() {
+            const spinner = document.getElementById('loading-spinner');
+            const tbody = document.getElementById('rates-body');
+
+            // Show loading spinner
+            spinner.classList.add('active');
+            tbody.style.opacity = '0.3';
+
+            // Simulate loading delay for better UX
+            setTimeout(() => {
+                const rates = calculateRates();
+
+                if (rates.length === 0) {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="4" style="text-align: center; padding: 40px;">
+                                <div style="font-size: 48px; margin-bottom: 15px;">😕</div>
+                                <div style="font-size: 16px; color: #718096; font-weight: 600;">No rates available</div>
+                                <div style="font-size: 13px; color: #a0aec0; margin-top: 8px;">Try adjusting your filters to see available rates</div>
+                            </td>
+                        </tr>
+                    `;
+                } else {
+                    tbody.innerHTML = rates.map((rate, index) => `
+                        <tr style="animation: fadeIn 0.5s ease-out ${index * 0.1}s both;">
+                            <td>
+                                <div class="company-name">
+                                    <div class="company-logo">A</div>
+                                    <div>
+                                        ${rate.carrier}
+                                        ${index === 0 ? '<div><span class="top-rated-badge">⭐ BEST RATE</span></div>' : ''}
+                                    </div>
+                                </div>
+                            </td>
+                            <td>${getCoverageBadge(rate.coverage)}</td>
+                            <td class="rate-cell">
+                                <div class="rate-monthly">$${rate.annualPremium.toLocaleString()}</div>
+                                <div class="rate-annual">per year</div>
+                            </td>
+                            <td class="rate-cell">
+                                <div class="rate-monthly" style="font-size: 20px;">$${rate.monthlyPremium}</div>
+                                <div class="rate-annual">per month</div>
+                            </td>
+                        </tr>
+                    `).join('');
+                }
+
+                // Hide loading spinner
+                spinner.classList.remove('active');
+                tbody.style.opacity = '1';
+            }, 600);
+        }
+
+        // Add fadeIn animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Track previous filter values for Mr. Wizard
+        let previousFilters = {
+            age: '30',
+            coverage: 'Full Coverage',
+            credit: 'Good',
+            speeding: '0',
+            at_fault: '0',
+            dui: '0'
+        };
+
+        // Mr. Wizard AI responses based on filter changes
+        const wizardResponses = {
+            age: {
+                '18': [
+                    "I see you're a young driver! 🚗 Young drivers often face higher premiums, but don't worry - maintaining a clean record can help lower your rates over time.",
+                    "Would you like to know about discounts available for young drivers, like good student discounts or defensive driving courses?"
+                ],
+                '30': [
+                    "Great choice! Drivers in their 30s typically enjoy more favorable rates. 📊",
+                    "At this age, you're in a sweet spot for insurance rates. Would you like tips on how to save even more?"
+                ]
+            },
+            coverage: {
+                'Full Coverage': [
+                    "Excellent! Full coverage protects you from collision and comprehensive damages. 🛡️",
+                    "Full coverage is a smart choice! It includes liability, collision, and comprehensive. Would you like me to explain what each covers?"
+                ],
+                'Minimum Coverage': [
+                    "I notice you selected minimum coverage. This covers liability only. ⚠️",
+                    "Minimum coverage can save money upfront, but are you aware of the risks? Would you like to compare the protection levels?"
+                ]
+            },
+            credit: {
+                'Good': [
+                    "Nice! Good credit can save you hundreds per year! 💰",
+                    "Your good credit score is working in your favor! Did you know improving your credit can lower rates even more?"
+                ],
+                'Poor': [
+                    "I see you have poor credit. Don't worry - there are still ways to save! 💪",
+                    "Poor credit can increase rates, but I can help you find the best options. Would you like tips on improving your credit score?"
+                ]
+            },
+            speeding: {
+                '1': [
+                    "I noticed you have a speeding ticket. 🚨 This typically increases rates by 20-30%.",
+                    "Speeding tickets can be costly! The good news is they usually fall off your record after 3 years. Want to know how to minimize the impact?"
+                ],
+                '0': [
+                    "Great driving record! No speeding tickets means better rates! ⭐",
+                    "Keep up the safe driving! A clean record is one of the best ways to keep your premiums low."
+                ]
+            },
+            at_fault: {
+                '1': [
+                    "I see you've had an at-fault accident. 😔 This can significantly impact your rates.",
+                    "At-fault accidents are tough, but rates typically improve after 3-5 years. Would you like to know about accident forgiveness programs?"
+                ],
+                '0': [
+                    "Excellent! No at-fault accidents keeps your rates competitive! 🎉",
+                    "Your clean accident record is saving you money! Keep up the safe driving!"
+                ]
+            },
+            dui: {
+                '1': [
+                    "I see you have a DUI on your record. This is serious and can double or triple your rates. 😟",
+                    "DUIs have the biggest impact on insurance costs. Would you like information about SR-22 insurance or high-risk coverage options?"
+                ],
+                '0': [
+                    "Great! No DUI means you qualify for standard rates. 👍",
+                    "Keeping a DUI-free record is crucial for affordable insurance!"
+                ]
+            }
+        };
+
+        const wizardFollowUps = [
+            "What matters most to you - the lowest price or the best coverage? 🤔",
+            "Would you like me to notify you when rates change in your area? 📧",
+            "Are you interested in learning about additional discounts you might qualify for? 💡",
+            "Would you like to know how your credit score affects your premium? 📊",
+            "Curious about what happens if you bundle home and auto insurance? 🏠🚗",
+            "Want to know the difference between liability, collision, and comprehensive coverage? 📚"
+        ];
+
+        // Add event listeners to all filters with Mr. Wizard integration
+        function createFilterListener(filterId, filterName) {
+            document.getElementById(filterId).addEventListener('change', function(e) {
+                const newValue = e.target.value;
+                const oldValue = previousFilters[filterId];
+
+                // Update rates
+                updateRatesTable();
+
+                // Mr. Wizard responds to the change
+                if (newValue !== oldValue) {
+                    setTimeout(() => {
+                        triggerWizardResponse(filterName, newValue);
+                    }, 1000);
+                    previousFilters[filterId] = newValue;
+                }
+            });
+        }
+
+        createFilterListener('age', 'age');
+        createFilterListener('coverage', 'coverage');
+        createFilterListener('credit', 'credit');
+        createFilterListener('speeding', 'speeding');
+        createFilterListener('at_fault', 'at_fault');
+        createFilterListener('dui', 'dui');
+
+        // Mr. Wizard animation and movement
+        let wizardMovementInterval;
+        let isWizardMoving = false;
+        const wizardPositions = [
+            { bottom: '30px', right: '30px' },
+            { bottom: '30px', left: '30px' },
+            { top: '100px', right: '30px' },
+            { bottom: '200px', right: '50%' },
+            { bottom: '30px', right: '30px' } // Return home
+        ];
+        let currentPositionIndex = 0;
+
+        // Make wizard move around the page
+        function startWizardAdventure() {
+            if (isWizardMoving) return;
+            isWizardMoving = true;
+
+            const container = document.getElementById('wizard-container');
+            const speech = document.getElementById('wizard-speech');
+
+            const messages = [
+                "Let me check the rates! 🔍",
+                "Looking for savings! 💰",
+                "Analyzing your options! 📊",
+                "Almost done! ⚡",
+                "Back to help you! 😊"
+            ];
+
+            wizardMovementInterval = setInterval(() => {
+                currentPositionIndex++;
+
+                if (currentPositionIndex >= wizardPositions.length) {
+                    currentPositionIndex = 0;
+                    clearInterval(wizardMovementInterval);
+                    isWizardMoving = false;
+                    return;
+                }
+
+                const pos = wizardPositions[currentPositionIndex];
+
+                // Update position
+                Object.keys(pos).forEach(key => {
+                    container.style[key] = pos[key];
+                    // Clear opposite position
+                    if (key === 'left') container.style.right = 'auto';
+                    if (key === 'right') container.style.left = 'auto';
+                    if (key === 'top') container.style.bottom = 'auto';
+                    if (key === 'bottom') container.style.top = 'auto';
+                });
+
+                // Show speech bubble
+                speech.textContent = messages[currentPositionIndex];
+                speech.classList.add('active');
+
+                setTimeout(() => {
+                    speech.classList.remove('active');
+                }, 2000);
+
+                // Create magic trail
+                createMagicTrail();
+
+            }, 3000);
+        }
+
+        // Create magical particle trail
+        function createMagicTrail() {
+            const container = document.getElementById('wizard-container');
+            const rect = container.getBoundingClientRect();
+
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const trail = document.createElement('div');
+                    trail.className = 'wizard-trail';
+                    trail.style.left = (rect.left + rect.width / 2) + 'px';
+                    trail.style.top = (rect.top + rect.height / 2) + 'px';
+                    trail.style.position = 'fixed';
+                    document.body.appendChild(trail);
+
+                    setTimeout(() => {
+                        trail.remove();
+                    }, 1000);
+                }, i * 100);
+            }
+        }
+
+        // Show comic-style speech bubble on hover
+        const wizardAvatar = document.getElementById('wizard-avatar');
+        const wizardSpeech = document.getElementById('wizard-speech');
+
+        wizardAvatar.addEventListener('mouseenter', () => {
+            const phrases = [
+                "Need help? 😊",
+                "Click the 💬 for chat history!",
+                "Let's find <span class='emphasis'>SAVINGS!</span> 💰",
+                "I'm here to help! ✨",
+                "Ask me anything! 🎯",
+                "Hover over the ? icons! 💡",
+                "I love insurance! 📋"
+            ];
+            wizardSpeech.innerHTML = phrases[Math.floor(Math.random() * phrases.length)];
+            wizardSpeech.classList.remove('thought');
+            wizardSpeech.classList.add('active');
+        });
+
+        wizardAvatar.addEventListener('mouseleave', () => {
+            setTimeout(() => {
+                wizardSpeech.classList.remove('active');
+            }, 2000);
+        });
+
+        // Toggle chat history window
+        function toggleChatHistory() {
+            const chatWindow = document.getElementById('wizard-chat-window');
+            const notification = document.getElementById('wizard-notification');
+            const speech = document.getElementById('wizard-speech');
+            const chatToggle = document.getElementById('chat-toggle');
+
+            chatWindow.classList.toggle('active');
+            notification.style.display = 'none';
+
+            if (chatWindow.classList.contains('active')) {
+                chatToggle.innerHTML = '✖️';
+                speech.innerHTML = "Here's our <span class='emphasis'>CHAT HISTORY!</span> 📜";
+                speech.classList.add('active');
+                createCelebrationEffect();
+
+                setTimeout(() => {
+                    speech.classList.remove('active');
+                }, 2000);
+            } else {
+                chatToggle.innerHTML = '💬';
+                speech.innerHTML = "Come back anytime! 👋";
+                speech.classList.add('active');
+
+                setTimeout(() => {
+                    speech.classList.remove('active');
+                }, 2000);
+            }
+        }
+
+        // Legacy function for compatibility
+        function toggleWizardChat() {
+            toggleChatHistory();
+        }
+
+        // Create celebration effect when chat opens
+        function createCelebrationEffect() {
+            const container = document.getElementById('wizard-container');
+            const rect = container.getBoundingClientRect();
+
+            for (let i = 0; i < 12; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.style.position = 'fixed';
+                    particle.style.left = (rect.left + rect.width / 2) + 'px';
+                    particle.style.top = (rect.top + rect.height / 2) + 'px';
+                    particle.style.width = '10px';
+                    particle.style.height = '10px';
+                    particle.style.borderRadius = '50%';
+                    particle.style.background = ['#ffd700', '#ff6b81', '#667eea', '#00d4aa'][Math.floor(Math.random() * 4)];
+                    particle.style.pointerEvents = 'none';
+                    particle.style.zIndex = '9999';
+
+                    const angle = (i / 12) * Math.PI * 2;
+                    const velocity = 100;
+                    const vx = Math.cos(angle) * velocity;
+                    const vy = Math.sin(angle) * velocity;
+
+                    document.body.appendChild(particle);
+
+                    let pos = { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+                    let opacity = 1;
+
+                    const animate = () => {
+                        pos.x += vx * 0.016;
+                        pos.y += vy * 0.016;
+                        opacity -= 0.02;
+
+                        particle.style.left = pos.x + 'px';
+                        particle.style.top = pos.y + 'px';
+                        particle.style.opacity = opacity;
+
+                        if (opacity > 0) {
+                            requestAnimationFrame(animate);
+                        } else {
+                            particle.remove();
+                        }
+                    };
+
+                    animate();
+                }, i * 50);
+            }
+        }
+
+        function triggerWizardResponse(filterType, value) {
+            const notification = document.getElementById('wizard-notification');
+            const speech = document.getElementById('wizard-speech');
+
+            notification.style.display = 'flex';
+
+            // Make wizard move around when responding
+            startWizardAdventure();
+
+            // Get appropriate response
+            let responses = wizardResponses[filterType][value];
+            if (!responses) return;
+
+            const mainResponse = responses[Math.floor(Math.random() * responses.length)];
+            const followUp = wizardFollowUps[Math.floor(Math.random() * wizardFollowUps.length)];
+
+            // Show comic-style speech bubbles during journey
+            const speechSequence = [
+                "Ooh, <span class='emphasis'>INTERESTING</span> choice! 🤔",
+                "Let me analyze this... 🔍",
+                "Calculating the best rates... 💭",
+                "I've got some insights! 💡"
+            ];
+
+            let speechIndex = 0;
+            const speechInterval = setInterval(() => {
+                if (speechIndex < speechSequence.length) {
+                    speech.innerHTML = speechSequence[speechIndex];
+                    speech.classList.remove('thought');
+                    speech.classList.add('active');
+
+                    setTimeout(() => {
+                        speech.classList.remove('active');
+                    }, 2500);
+
+                    speechIndex++;
+                } else {
+                    clearInterval(speechInterval);
+                }
+            }, 3000);
+
+            // Add messages to chat history
+            setTimeout(() => {
+                addWizardMessage(mainResponse, false);
+
+                // Show final speech bubble
+                speech.innerHTML = mainResponse.substring(0, 50) + "... 💬";
+                speech.classList.add('active');
+
+                setTimeout(() => {
+                    speech.classList.remove('active');
+                }, 3000);
+            }, 12000);
+
+            setTimeout(() => {
+                addWizardMessage(followUp, false, true);
+            }, 14000);
+        }
+
+        function addWizardMessage(text, isUser = false, includeQuickReplies = false) {
+            const messagesContainer = document.getElementById('wizard-messages');
+            const typingIndicator = document.getElementById('wizard-typing');
+
+            if (!isUser) {
+                typingIndicator.classList.add('active');
+                setTimeout(() => {
+                    typingIndicator.classList.remove('active');
+
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = `wizard-message ${isUser ? 'user' : ''}`;
+
+                    let messageHTML = `<div class="message-bubble">${text}</div>`;
+
+                    if (includeQuickReplies) {
+                        messageHTML += `
+                            <div class="wizard-quick-replies">
+                                <button class="quick-reply-btn" onclick="handleQuickReply('Yes, tell me more!')">Yes, tell me more!</button>
+                                <button class="quick-reply-btn" onclick="handleQuickReply('No thanks')">No thanks</button>
+                                <button class="quick-reply-btn" onclick="handleQuickReply('Show me discounts')">Show discounts</button>
+                            </div>
+                        `;
+                    }
+
+                    messageDiv.innerHTML = messageHTML;
+                    messagesContainer.appendChild(messageDiv);
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }, 1500);
+            } else {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'wizard-message user';
+                messageDiv.innerHTML = `<div class="message-bubble">${text}</div>`;
+                messagesContainer.appendChild(messageDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+        }
+
+        function handleQuickReply(reply) {
+            addWizardMessage(reply, true);
+
+            setTimeout(() => {
+                let response = '';
+                if (reply.includes('more')) {
+                    response = "Great! I'd be happy to explain more. Insurance can be complex, but I'm here to make it simple. What specific aspect would you like to know about? 📚";
+                } else if (reply.includes('thanks')) {
+                    response = "No problem! I'm always here if you need help. Just adjust the filters and I'll provide insights! 😊";
+                } else if (reply.includes('discounts')) {
+                    response = "Awesome! Here are some common discounts: Multi-policy (10-25%), Good driver (10-20%), Good student (up to 25%), Low mileage (5-15%), and Safety features (5-10%). Ask your insurer which you qualify for! 💰";
+                }
+                addWizardMessage(response, false);
+            }, 1000);
+        }
+
+        function sendWizardMessage() {
+            const input = document.getElementById('wizard-input');
+            const message = input.value.trim();
+
+            if (message) {
+                addWizardMessage(message, true);
+                input.value = '';
+
+                // Simulate AI response
+                setTimeout(() => {
+                    const responses = [
+                        "That's a great question! Based on your current profile, I'd recommend focusing on maintaining your clean driving record. 🚗",
+                        "I understand your concern. Insurance rates are based on risk factors, and I can help you optimize your coverage! 💡",
+                        "Excellent point! Let me help you understand how that affects your premium. Would you like specific details? 📊",
+                        "Thanks for asking! The best way to save is to compare rates regularly and maintain good credit. Want more tips? 💰"
+                    ];
+                    const response = responses[Math.floor(Math.random() * responses.length)];
+                    addWizardMessage(response, false);
+                }, 1500);
+            }
+        }
+
+        function handleWizardEnter(event) {
+            if (event.key === 'Enter') {
+                sendWizardMessage();
+            }
+        }
+
+        // Initial render
+        updateRatesTable();
+
+        // Welcome message from Mr. Wizard after 3 seconds
+        setTimeout(() => {
+            const notification = document.getElementById('wizard-notification');
+            const speech = document.getElementById('wizard-speech');
+
+            notification.style.display = 'flex';
+            speech.innerHTML = "Hi! I'm <span class='emphasis'>MR. WIZARD!</span> 🧙‍♂️✨";
+            speech.classList.add('active');
+
+            // Make wizard do a little dance
+            const avatar = document.getElementById('wizard-avatar');
+            avatar.style.animation = 'wizardFloat 0.5s ease-in-out 3';
+
+            setTimeout(() => {
+                speech.classList.remove('active');
+
+                // Follow up with another bubble
+                setTimeout(() => {
+                    speech.innerHTML = "I'll help you find the <span class='emphasis'>BEST</span> insurance rates! 💰";
+                    speech.classList.add('active');
+
+                    setTimeout(() => {
+                        speech.classList.remove('active');
+                    }, 4000);
+                }, 1000);
+            }, 3000);
+        }, 3000);
+
+        // Random wizard movements and speech every 30 seconds
+        setInterval(() => {
+            if (!isWizardMoving && !document.getElementById('wizard-chat-window').classList.contains('active')) {
+                const speech = document.getElementById('wizard-speech');
+                const phrases = [
+                    "Still here if you need me! 😊",
+                    "Don't forget to <span class='emphasis'>COMPARE</span> rates! 💡",
+                    "I can help you <span class='emphasis'>SAVE MONEY!</span> 💰",
+                    "Any questions? Just ask! 🎯",
+                    "Try changing the filters! 🔧",
+                    "Click 💬 to see our chat! 📜"
+                ];
+
+                const useThought = Math.random() > 0.7;
+
+                if (useThought) {
+                    speech.innerHTML = phrases[Math.floor(Math.random() * phrases.length)];
+                    speech.classList.add('thought');
+                    speech.innerHTML += '<div class="thought-bubbles"><div class="thought-bubble"></div><div class="thought-bubble"></div><div class="thought-bubble"></div></div>';
+                } else {
+                    speech.innerHTML = phrases[Math.floor(Math.random() * phrases.length)];
+                    speech.classList.remove('thought');
+                }
+
+                speech.classList.add('active');
+
+                setTimeout(() => {
+                    speech.classList.remove('active');
+                }, 4000);
+            }
+        }, 30000);
+
+        // Add wizard shake on page scroll
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            const st = window.pageYOffset || document.documentElement.scrollTop;
+            if (Math.abs(st - lastScrollTop) > 100) {
+                const avatar = document.getElementById('wizard-avatar');
+                avatar.style.animation = 'none';
+                setTimeout(() => {
+                    avatar.style.animation = 'wizardFloat 3s ease-in-out infinite';
+                }, 10);
+            }
+            lastScrollTop = st <= 0 ? 0 : st;
+        });
+    </script>
+</body>
+</html>
+
