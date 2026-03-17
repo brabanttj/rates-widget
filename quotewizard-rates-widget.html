@@ -22,11 +22,131 @@
             color: #454545;
         }
 
+        /* LendingTree Header */
+        .lt-header {
+            background: #FFFFFF;
+            border-bottom: 1px solid #E5E7EB;
+            padding: 16px 0;
+        }
+
+        .lt-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .lt-logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 28px;
+            color: #52B947;
+            font-weight: 400;
+            text-decoration: none;
+        }
+
+        .lt-nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .lt-nav a {
+            color: #101F30;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .lt-nav a:hover {
+            color: #52B947;
+        }
+
+        .lt-phone {
+            color: #0069BA;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: #F8F9FA;
+            padding: 40px 0;
+        }
+
         .widget-container {
             max-width: 1200px;
             margin: 0 auto;
             background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
             animation: slideUp 0.6s ease-out;
+        }
+
+        /* LendingTree Footer */
+        .lt-footer {
+            background: #101F30;
+            color: #FFFFFF;
+            padding: 48px 0 24px;
+        }
+
+        .lt-footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .lt-footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .lt-footer-column h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .lt-footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .lt-footer-column li {
+            margin-bottom: 12px;
+        }
+
+        .lt-footer-column a {
+            color: #B8BCC4;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+
+        .lt-footer-column a:hover {
+            color: #52B947;
+        }
+
+        .lt-footer-bottom {
+            border-top: 1px solid #2D3748;
+            padding-top: 24px;
+            text-align: center;
+            color: #B8BCC4;
+            font-size: 12px;
+        }
+
+        .lt-footer-logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 24px;
+            color: #52B947;
+            margin-bottom: 16px;
         }
 
         @keyframes slideUp {
@@ -41,56 +161,120 @@
         }
 
         .widget-header {
-            background: #FFFFFF;
-            color: #101F30;
-            padding: 64px 48px 48px;
+            background: linear-gradient(135deg, #0069BA 0%, #005A9C 100%);
+            color: #FFFFFF;
+            padding: 48px 32px 40px;
             text-align: center;
-            border-bottom: 1px solid #F1F3F3;
+            border-bottom: none;
         }
 
         .widget-header h2 {
             font-family: 'DM Serif Display', serif;
-            font-size: 40px;
-            margin-bottom: 16px;
+            font-size: 36px;
+            margin-bottom: 12px;
             font-weight: 400;
-            color: #101F30;
+            color: #FFFFFF;
             letter-spacing: -0.5px;
             line-height: 1.2;
         }
 
         .widget-header p {
-            font-size: 18px;
-            color: #454545;
+            font-size: 16px;
+            color: #FFFFFF;
             font-weight: 400;
-            line-height: 1.6;
+            line-height: 1.5;
+            opacity: 0.95;
         }
 
         .filters-section {
-            padding: 48px 48px 56px;
             background: white;
             border-bottom: 1px solid #F1F3F3;
         }
 
+        .filters-header {
+            padding: 20px 32px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s ease;
+        }
+
+        .filters-header:hover {
+            background: #FAFBFB;
+        }
+
+        .filters-header-content {
+            flex: 1;
+        }
+
         .section-title {
             font-family: 'DM Serif Display', serif;
-            font-size: 28px;
+            font-size: 20px;
             font-weight: 400;
             color: #101F30;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             letter-spacing: -0.3px;
         }
 
         .section-subtitle {
-            font-size: 16px;
+            font-size: 13px;
             color: #454545;
-            margin-bottom: 32px;
             line-height: 1.5;
+        }
+
+        .filters-toggle {
+            font-size: 24px;
+            color: #6CC24A;
+            transition: transform 0.3s ease;
+        }
+
+        .filters-toggle.expanded {
+            transform: rotate(180deg);
+        }
+
+        .filters-preview {
+            padding: 0 32px 20px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filters-preview.hidden {
+            display: none;
+        }
+
+        .filter-preview-item {
+            background: #F8F9FA;
+            border: 1px solid #D8DCDC;
+            border-radius: 4px;
+            padding: 6px 12px;
+            font-size: 12px;
+            color: #454545;
+        }
+
+        .filter-preview-label {
+            font-weight: 700;
+            color: #101F30;
+            margin-right: 4px;
+        }
+
+        .filters-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .filters-content.expanded {
+            max-height: 1000px;
         }
 
         .filters-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            gap: 16px;
+            padding: 0 32px 28px;
         }
 
         .filter-group {
@@ -120,7 +304,7 @@
             justify-content: center;
             width: 18px;
             height: 18px;
-            background: #6CC24A;
+            background: #52B947;
             color: white;
             border-radius: 50%;
             font-size: 11px;
@@ -165,10 +349,10 @@
         }
 
         .filter-group select {
-            padding: 14px 16px;
+            padding: 10px 12px;
             border: 2px solid #D8DCDC;
             border-radius: 4px;
-            font-size: 16px;
+            font-size: 14px;
             background: white;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -177,41 +361,42 @@
             appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23454545' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            background-position: right 12px center;
-            padding-right: 40px;
+            background-position: right 10px center;
+            padding-right: 32px;
         }
 
         .filter-group select:hover {
-            border-color: #6CC24A;
+            border-color: #52B947;
         }
 
         .filter-group select:focus {
             outline: none;
-            border-color: #6CC24A;
-            box-shadow: 0 0 0 3px rgba(108, 194, 74, 0.15);
+            border-color: #52B947;
+            box-shadow: 0 0 0 3px rgba(82, 185, 71, 0.15);
         }
 
         .rates-section {
-            padding: 56px 48px 64px;
+            padding: 28px 32px 32px;
             background: white;
+            position: relative;
         }
 
         .rates-header {
-            margin-bottom: 32px;
+            margin-bottom: 20px;
         }
 
         .rates-header h3 {
             font-family: 'DM Serif Display', serif;
             color: #101F30;
-            font-size: 28px;
-            margin-bottom: 8px;
+            font-size: 20px;
+            margin-bottom: 6px;
             font-weight: 400;
             letter-spacing: -0.3px;
         }
 
         .rates-header p {
             color: #454545;
-            font-size: 16px;
+            font-size: 13px;
         }
 
         .loading-spinner {
@@ -259,10 +444,10 @@
         }
 
         .rates-table th {
-            padding: 16px 20px;
+            padding: 12px 16px;
             text-align: left;
             font-weight: 700;
-            font-size: 12px;
+            font-size: 10px;
             color: #101F30;
             text-transform: uppercase;
             letter-spacing: 0.8px;
@@ -282,43 +467,34 @@
         }
 
         .rates-table td {
-            padding: 20px;
+            padding: 14px 16px;
             color: #101F30;
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .company-name {
             font-weight: 700;
             color: #101F30;
-            font-size: 16px;
+            font-size: 14px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .company-logo {
-            width: 40px;
-            height: 40px;
-            background: #6CC24A;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 16px;
+            display: none;
         }
 
         .rate-monthly {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 900;
-            color: #6CC24A;
+            color: #52B947;
         }
 
         .rate-annual {
             color: #767676;
-            font-size: 14px;
-            margin-top: 4px;
+            font-size: 12px;
+            margin-top: 2px;
             font-weight: 400;
         }
 
@@ -348,23 +524,492 @@
 
         .coverage-full {
             background: #E8F5E9;
-            color: #6CC24A;
+            color: #52B947;
         }
 
-        .disclaimer {
-            padding: 24px 48px;
-            background: #FAFBFB;
+        /* Proceed Section - Grove Design System */
+        .proceed-section {
+            padding: 24px 32px 28px;
+            background: #FFFFFF;
             border-top: 2px solid #F1F3F3;
+        }
+
+        .proceed-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .proceed-header h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 24px;
+            color: #101F30;
+            margin-bottom: 6px;
+            font-weight: 400;
+        }
+
+        .proceed-header p {
             font-size: 14px;
             color: #454545;
-            line-height: 1.6;
+        }
+
+        /* Agent Recommendation */
+        .proceed-recommendation {
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+
+        .recommendation-badge {
+            background: linear-gradient(135deg, #FFF4E5 0%, #FFFBF0 100%);
+            border: 2px solid #E87722;
+            border-radius: 8px;
+            padding: 16px 20px;
             display: flex;
+            gap: 12px;
             align-items: start;
+        }
+
+        .recommendation-icon {
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .recommendation-content {
+            flex: 1;
+        }
+
+        .recommendation-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #E87722;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .recommendation-text {
+            font-size: 14px;
+            color: #101F30;
+            line-height: 1.5;
+        }
+
+        .recommendation-text strong {
+            color: #E87722;
+            font-weight: 700;
+        }
+
+        /* Proceed Options */
+        .proceed-options {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
             gap: 12px;
         }
 
+        .proceed-option {
+            background: #FFFFFF;
+            border: 2px solid #D8DCDC;
+            border-radius: 8px;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .proceed-option:hover {
+            border-color: #0069BA;
+            box-shadow: 0 4px 12px rgba(0, 105, 186, 0.1);
+            transform: translateX(4px);
+        }
+
+        .proceed-option.recommended {
+            border-color: #52B947;
+            background: linear-gradient(135deg, #F0F9ED 0%, #FFFFFF 100%);
+            box-shadow: 0 2px 8px rgba(82, 185, 71, 0.15);
+        }
+
+        .proceed-option.recommended:hover {
+            border-color: #52B947;
+            box-shadow: 0 6px 16px rgba(82, 185, 71, 0.25);
+        }
+
+        .proceed-option-badge {
+            position: absolute;
+            top: -12px;
+            left: 24px;
+            background: #52B947;
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .proceed-option-icon {
+            font-size: 40px;
+            flex-shrink: 0;
+        }
+
+        .proceed-option-content {
+            flex: 1;
+        }
+
+        .proceed-option-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #101F30;
+            margin-bottom: 4px;
+        }
+
+        .proceed-option-description {
+            font-size: 14px;
+            color: #454545;
+        }
+
+        .proceed-option-arrow {
+            font-size: 24px;
+            color: #0069BA;
+            font-weight: 700;
+            transition: transform 0.2s ease;
+        }
+
+        .proceed-option:hover .proceed-option-arrow {
+            transform: translateX(4px);
+        }
+
+        .proceed-option.recommended .proceed-option-arrow {
+            color: #52B947;
+        }
+
+        /* Next Steps Section */
+        .next-steps-section {
+            padding: 32px;
+            background: #F8F9FA;
+            border-top: 2px solid #F1F3F3;
+        }
+
+        .next-steps-header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .next-steps-header h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 24px;
+            color: #101F30;
+            margin-bottom: 8px;
+        }
+
+        .next-steps-header p {
+            font-size: 14px;
+            color: #454545;
+        }
+
+        /* Carrier Cards */
+        .carrier-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .carrier-card {
+            background: white;
+            border: 2px solid #D8DCDC;
+            border-radius: 4px;
+            padding: 28px 24px;
+            text-align: center;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .carrier-card.featured {
+            border-color: #52B947;
+            background: linear-gradient(180deg, #FFFFFF 0%, #F9FDF7 100%);
+            box-shadow: 0 2px 8px rgba(82, 185, 71, 0.12);
+        }
+
+        .carrier-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            border-color: #0069BA;
+        }
+
+        .carrier-card.featured:hover {
+            border-color: #52B947;
+            box-shadow: 0 4px 16px rgba(82, 185, 71, 0.2);
+        }
+
+        .carrier-badge {
+            background: #52B947;
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .carrier-logo-large {
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .carrier-logo-large img {
+            max-width: 180px;
+            max-height: 50px;
+        }
+
+        .carrier-card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #101F30;
+            margin-bottom: 12px;
+        }
+
+        .carrier-card-price {
+            font-size: 32px;
+            font-weight: 900;
+            color: #6CC24A;
+            margin-bottom: 16px;
+        }
+
+        .carrier-cta-button {
+            width: 100%;
+            padding: 16px 24px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 20px;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .carrier-cta-button.primary {
+            background: #52B947;
+            color: white;
+            box-shadow: 0 2px 4px rgba(82, 185, 71, 0.2);
+        }
+
+        .carrier-cta-button.primary:hover {
+            background: #469E3D;
+            box-shadow: 0 4px 8px rgba(82, 185, 71, 0.3);
+        }
+
+        .carrier-cta-button.primary:active {
+            transform: translateY(1px);
+        }
+
+        .carrier-cta-button.secondary {
+            background: white;
+            color: #0069BA;
+            border: 2px solid #0069BA;
+        }
+
+        .carrier-cta-button.secondary:hover {
+            background: #0069BA;
+            color: white;
+        }
+
+        .carrier-cta-button.secondary:active {
+            transform: translateY(1px);
+        }
+
+        .carrier-card-features {
+            font-size: 13px;
+            color: #454545;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        /* Agent Card */
+        .agent-card {
+            background: white;
+            border: 2px solid #E31837;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .agent-card.callback {
+            border-color: #52B947;
+        }
+
+        .agent-card-header {
+            background: linear-gradient(135deg, #E31837 0%, #C41230 100%);
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .agent-card.callback .agent-card-header {
+            background: linear-gradient(135deg, #52B947 0%, #469E3D 100%);
+        }
+
+        .agent-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid white;
+            flex-shrink: 0;
+        }
+
+        .agent-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .agent-info {
+            flex: 1;
+            text-align: left;
+        }
+
+        .agent-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        .agent-company {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 8px;
+        }
+
+        .agent-rating {
+            font-size: 13px;
+            color: white;
+        }
+
+        .agent-card-body {
+            padding: 28px;
+        }
+
+        .agent-message {
+            font-size: 15px;
+            color: #101F30;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .agent-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+            padding: 20px;
+            background: #F8F9FA;
+            border-radius: 6px;
+        }
+
+        .agent-stat {
+            text-align: center;
+        }
+
+        .agent-stat-number {
+            font-size: 24px;
+            font-weight: 900;
+            color: #E31837;
+            margin-bottom: 4px;
+        }
+
+        .agent-card.callback .agent-stat-number {
+            color: #52B947;
+        }
+
+        .agent-stat-label {
+            font-size: 11px;
+            color: #454545;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .agent-cta-button {
+            width: 100%;
+            padding: 16px 24px;
+            background: #E31837;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 16px;
+        }
+
+        .agent-card.callback .agent-cta-button {
+            background: #52B947;
+        }
+
+        .agent-cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(227, 24, 55, 0.3);
+        }
+
+        .agent-card.callback .agent-cta-button:hover {
+            box-shadow: 0 6px 16px rgba(82, 185, 71, 0.3);
+        }
+
+        .agent-availability {
+            text-align: center;
+            font-size: 13px;
+            color: #52B947;
+            font-weight: 600;
+        }
+
+        .callback-form {
+            margin-bottom: 20px;
+        }
+
+        .callback-input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #D8DCDC;
+            border-radius: 6px;
+            font-size: 16px;
+            margin-bottom: 12px;
+            transition: border-color 0.2s ease;
+        }
+
+        .callback-input:focus {
+            outline: none;
+            border-color: #52B947;
+        }
+
+        .disclaimer {
+            padding: 16px 32px;
+            background: #FAFBFB;
+            border-top: 1px solid #F1F3F3;
+            font-size: 11px;
+            color: #454545;
+            line-height: 1.5;
+            display: flex;
+            align-items: start;
+            gap: 8px;
+        }
+
         .disclaimer-icon {
-            font-size: 20px;
+            font-size: 14px;
             flex-shrink: 0;
             color: #E87722;
         }
@@ -373,7 +1018,7 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            background: #6CC24A;
+            background: #52B947;
             color: white;
             padding: 4px 10px;
             border-radius: 4px;
@@ -398,7 +1043,7 @@
 
         .info-card {
             background: #FAFBFB;
-            padding: 32px 24px;
+            padding: 20px 16px;
             text-align: center;
             transition: all 0.2s ease;
         }
@@ -408,60 +1053,117 @@
         }
 
         .info-card-icon {
-            font-size: 32px;
-            margin-bottom: 12px;
-        }
-
-        .info-card-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: #101F30;
+            font-size: 24px;
             margin-bottom: 8px;
         }
 
+        .info-card-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #101F30;
+            margin-bottom: 4px;
+        }
+
         .info-card-text {
-            font-size: 14px;
+            font-size: 12px;
             color: #454545;
-            line-height: 1.5;
+            line-height: 1.4;
         }
 
         /* Mr. Wizard Chat Assistant */
         .wizard-container {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            top: 20px;
+            right: 32px;
             z-index: 1000;
-            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
+            cursor: move;
+            user-select: none;
+        }
+
+        .wizard-container.dragging {
+            opacity: 0.8;
+            cursor: grabbing;
         }
 
         .wizard-avatar {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #0069BA 0%, #0052A3 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 2px 8px rgba(0, 105, 186, 0.25), 0 0 0 3px rgba(0, 105, 186, 0.1);
             transition: all 0.3s ease;
             position: relative;
             overflow: visible;
         }
 
+        .wizard-avatar::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid rgba(0, 105, 186, 0.3);
+            animation: subtleRipple 3s ease-out infinite;
+        }
+
+        @keyframes subtleRipple {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.4); opacity: 0; }
+        }
+
         .wizard-avatar:hover {
-            transform: scale(1.1);
-            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 105, 186, 0.35), 0 0 0 3px rgba(0, 105, 186, 0.15);
         }
 
         .wizard-avatar:active {
-            transform: scale(0.95);
+            transform: translateY(0);
         }
 
         .wizard-face {
-            font-size: 40px;
+            font-size: 24px;
             position: relative;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .wizard-badge {
+            background: white;
+            padding: 8px 14px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 12px;
+            font-weight: 700;
+            color: #101F30;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            border: 1px solid #F1F3F3;
+            cursor: grab;
+        }
+
+        .wizard-badge:active {
+            cursor: grabbing;
+        }
+
+        .wizard-badge-dot {
+            width: 6px;
+            height: 6px;
+            background: #52B947;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         /* Wizard Hat - Disney Quality */
@@ -999,56 +1701,47 @@
 
 
 
-        /* Comic Book Style Speech Bubble */
+        /* Professional Speech Bubble */
         .wizard-speech-bubble {
             position: absolute;
             bottom: 120%;
             left: 50%;
-            transform: translateX(-50%) translateY(10px);
+            transform: translateX(-50%) translateY(8px);
             background: white;
-            padding: 16px 20px;
-            border-radius: 20px;
-            border: 4px solid #2d3748;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.25), inset 0 2px 0 rgba(255,255,255,0.8);
-            font-size: 15px;
-            font-weight: 700;
-            color: #2d3748;
+            padding: 14px 18px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
+            font-size: 13px;
+            font-weight: 400;
+            color: #101F30;
             min-width: 200px;
-            max-width: 320px;
-            text-align: center;
+            max-width: 340px;
+            text-align: left;
             opacity: 0;
             pointer-events: none;
             z-index: 1001;
-            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive, sans-serif;
-            line-height: 1.4;
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
         }
 
-        /* Comic book tail pointing to wizard's mouth */
+        /* Subtle tail pointing to agent */
         .wizard-speech-bubble::after {
             content: '';
             position: absolute;
-            bottom: -20px;
+            bottom: -6px;
             left: 50%;
             transform: translateX(-50%);
             width: 0;
             height: 0;
-            border-left: 20px solid transparent;
-            border-right: 20px solid transparent;
-            border-top: 20px solid #2d3748;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid white;
+            filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.05));
         }
 
         .wizard-speech-bubble::before {
-            content: '';
-            position: absolute;
-            bottom: -13px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 16px solid transparent;
-            border-right: 16px solid transparent;
-            border-top: 16px solid white;
-            z-index: 1;
+            display: none;
         }
 
         /* Thought bubble style for internal thoughts */
@@ -1102,26 +1795,30 @@
         .wizard-speech-bubble.active {
             opacity: 1;
             transform: translateX(-50%) translateY(0);
-            animation: bubblePop 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        @keyframes bubblePop {
-            0% {
-                transform: translateX(-50%) translateY(10px) scale(0);
-            }
-            50% {
-                transform: translateX(-50%) translateY(-5px) scale(1.1);
-            }
-            100% {
-                transform: translateX(-50%) translateY(0) scale(1);
-            }
+            pointer-events: auto;
         }
 
         /* Emphasis effects for speech */
         .wizard-speech-bubble .emphasis {
-            color: #667eea;
-            font-size: 1.2em;
-            animation: textPulse 0.5s ease-in-out infinite;
+            color: #0069BA;
+            font-weight: 700;
+        }
+
+        .wizard-speech-bubble strong {
+            color: #0069BA;
+            font-weight: 700;
+        }
+
+        .wizard-speech-bubble a {
+            color: #0069BA;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .wizard-speech-bubble a:hover {
+            color: #6CC24A;
+            text-decoration: underline;
         }
 
         @keyframes textPulse {
@@ -1493,8 +2190,37 @@
         }
 
         @media (max-width: 768px) {
+            .lt-header-content {
+                padding: 0 20px;
+            }
+
+            .lt-nav {
+                display: none;
+            }
+
+            .lt-logo {
+                font-size: 24px;
+            }
+
+            .main-content {
+                padding: 24px 0;
+            }
+
+            .widget-container {
+                max-width: 100%;
+            }
+
+            .lt-footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .lt-footer-content {
+                padding: 0 20px;
+            }
+
             .widget-header {
-                padding: 32px 24px 24px;
+                padding: 24px 20px 20px;
             }
 
             .widget-header h2 {
@@ -1502,7 +2228,7 @@
             }
 
             .filters-section {
-                padding: 32px 24px;
+                padding: 20px;
             }
 
             .filters-grid {
@@ -1515,12 +2241,12 @@
             }
 
             .rates-section {
-                padding: 32px 24px;
+                padding: 20px;
             }
 
             .rates-table th,
             .rates-table td {
-                padding: 12px;
+                padding: 10px;
                 font-size: 12px;
             }
 
@@ -1529,11 +2255,76 @@
             }
 
             .company-name {
+                font-size: 12px;
+            }
+
+            .company-logo {
+                width: 28px;
+                height: 28px;
+                font-size: 12px;
+            }
+
+            .proceed-section {
+                padding: 24px 20px;
+            }
+
+            .proceed-header h3 {
+                font-size: 22px;
+            }
+
+            .proceed-recommendation {
+                margin-bottom: 24px;
+            }
+
+            .recommendation-badge {
+                flex-direction: column;
+                text-align: center;
+                padding: 16px;
+            }
+
+            .proceed-option {
+                padding: 20px 16px;
+                gap: 12px;
+            }
+
+            .proceed-option-icon {
+                font-size: 32px;
+            }
+
+            .proceed-option-title {
+                font-size: 16px;
+            }
+
+            .proceed-option-description {
                 font-size: 13px;
             }
 
+            .next-steps-section {
+                padding: 20px;
+            }
+
+            .carrier-cards {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .agent-card-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .agent-info {
+                text-align: center;
+            }
+
+            .agent-stats {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
             .disclaimer {
-                padding: 16px 24px;
+                padding: 12px 20px;
+                font-size: 10px;
             }
 
             .tooltip-text {
@@ -1542,8 +2333,12 @@
             }
 
             .wizard-container {
-                bottom: 20px;
-                right: 20px;
+                bottom: 16px;
+                right: 16px;
+            }
+
+            .wizard-badge {
+                display: none;
             }
 
             .wizard-chat-window {
@@ -1554,120 +2349,230 @@
     </style>
 </head>
 <body>
-    <div class="widget-container">
+    <!-- LendingTree Header -->
+    <header class="lt-header">
+        <div class="lt-header-content">
+            <a href="#" class="lt-logo">LendingTree</a>
+            <nav class="lt-nav">
+                <a href="#">Home</a>
+                <a href="#">Loans</a>
+                <a href="#">Credit Cards</a>
+                <a href="#">Insurance</a>
+                <a href="#">Banking</a>
+                <span class="lt-phone">📞 855-621-1855</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="widget-container">
         <div class="widget-header">
             <h2>Auto Insurance Rate Calculator</h2>
             <p>Compare personalized quotes and find the best coverage for your needs</p>
         </div>
 
-        <div class="info-cards">
-            <div class="info-card">
-                <div class="info-card-icon">⚡</div>
-                <div class="info-card-title">Instant Results</div>
-                <div class="info-card-text">Real-time rate calculations</div>
-            </div>
-            <div class="info-card">
-                <div class="info-card-icon">🔒</div>
-                <div class="info-card-title">Secure & Private</div>
-                <div class="info-card-text">Your data stays protected</div>
-            </div>
-            <div class="info-card">
-                <div class="info-card-icon">💰</div>
-                <div class="info-card-title">Best Rates</div>
-                <div class="info-card-text">Compare and save money</div>
-            </div>
-        </div>
-
         <div class="filters-section">
-            <div class="section-title">
-                Your Profile
+            <div class="filters-header" onclick="toggleFilters()">
+                <div class="filters-header-content">
+                    <div class="section-title">
+                        Your Profile
+                    </div>
+                    <div class="section-subtitle">
+                        Click to customize your quote
+                    </div>
+                </div>
+                <div class="filters-toggle" id="filters-toggle">▼</div>
             </div>
-            <div class="section-subtitle">
-                Adjust the filters below to see personalized rate estimates
+
+            <div class="filters-preview" id="filters-preview">
+                <div class="filter-preview-item">
+                    <span class="filter-preview-label">Age:</span>
+                    <span id="preview-age">30-39 years old</span>
+                </div>
+                <div class="filter-preview-item">
+                    <span class="filter-preview-label">Coverage:</span>
+                    <span id="preview-coverage">Full Coverage</span>
+                </div>
+                <div class="filter-preview-item">
+                    <span class="filter-preview-label">Credit:</span>
+                    <span id="preview-credit">Good (700-749)</span>
+                </div>
+                <div class="filter-preview-item">
+                    <span class="filter-preview-label">Vehicle:</span>
+                    <span id="preview-vehicle">Sedan</span>
+                </div>
             </div>
 
-            <div class="filters-grid">
-                <div class="filter-group">
-                    <div class="filter-label-wrapper">
-                        <label for="age">Driver Age</label>
-                        <span class="tooltip-icon">?
-                            <span class="tooltip-text">Younger drivers typically pay more due to less experience</span>
-                        </span>
+            <div class="filters-content" id="filters-content">
+                <div class="filters-grid">
+                    <div class="filter-group">
+                        <div class="filter-label-wrapper">
+                            <label for="age">Driver Age</label>
+                            <span class="tooltip-icon">?
+                                <span class="tooltip-text">Younger drivers typically pay more due to less experience</span>
+                            </span>
+                        </div>
+                        <select id="age">
+                            <option value="16">16-17 years old</option>
+                            <option value="18">18-20 years old</option>
+                            <option value="21">21-24 years old</option>
+                            <option value="25">25-29 years old</option>
+                            <option value="30" selected>30-39 years old</option>
+                            <option value="40">40-49 years old</option>
+                            <option value="50">50-59 years old</option>
+                            <option value="60">60-69 years old</option>
+                            <option value="70">70+ years old</option>
+                        </select>
                     </div>
-                    <select id="age">
-                        <option value="18">18 years old</option>
-                        <option value="30" selected>30 years old</option>
-                    </select>
-                </div>
 
-                <div class="filter-group">
-                    <div class="filter-label-wrapper">
-                        <label for="coverage">Coverage Type</label>
-                        <span class="tooltip-icon">?
-                            <span class="tooltip-text">Full coverage includes collision & comprehensive protection</span>
-                        </span>
+                    <div class="filter-group">
+                        <div class="filter-label-wrapper">
+                            <label for="coverage">Coverage Type</label>
+                            <span class="tooltip-icon">?
+                                <span class="tooltip-text">Full coverage includes collision & comprehensive protection</span>
+                            </span>
+                        </div>
+                        <select id="coverage">
+                            <option value="Minimum Coverage">Minimum (Liability Only)</option>
+                            <option value="Standard Coverage">Standard Coverage</option>
+                            <option value="Full Coverage" selected>Full Coverage</option>
+                            <option value="Premium Coverage">Premium Coverage</option>
+                        </select>
                     </div>
-                    <select id="coverage">
-                        <option value="Minimum Coverage">Minimum (Liability Only)</option>
-                        <option value="Full Coverage" selected>Full Coverage</option>
-                    </select>
-                </div>
 
-                <div class="filter-group">
-                    <div class="filter-label-wrapper">
-                        <label for="credit">Credit Score</label>
-                        <span class="tooltip-icon">?
-                            <span class="tooltip-text">Better credit scores often qualify for lower rates</span>
-                        </span>
+                    <div class="filter-group">
+                        <div class="filter-label-wrapper">
+                            <label for="credit">Credit Score</label>
+                            <span class="tooltip-icon">?
+                                <span class="tooltip-text">Better credit scores often qualify for lower rates</span>
+                            </span>
+                        </div>
+                        <select id="credit">
+                            <option value="Excellent">Excellent (750+)</option>
+                            <option value="Good" selected>Good (700-749)</option>
+                            <option value="Fair">Fair (650-699)</option>
+                            <option value="Poor">Poor (Below 650)</option>
+                        </select>
                     </div>
-                    <select id="credit">
-                        <option value="Good" selected>Good Credit</option>
-                        <option value="Poor">Poor Credit</option>
-                    </select>
-                </div>
 
-                <div class="filter-group">
-                    <div class="filter-label-wrapper">
-                        <label for="speeding">Speeding Tickets</label>
-                        <span class="tooltip-icon">?
-                            <span class="tooltip-text">Recent tickets can increase your premium by 20-30%</span>
-                        </span>
+                    <div class="filter-group">
+                        <div class="filter-label-wrapper">
+                            <label for="vehicle">Vehicle Type</label>
+                            <span class="tooltip-icon">?
+                                <span class="tooltip-text">Vehicle type affects insurance costs</span>
+                            </span>
+                        </div>
+                        <select id="vehicle">
+                            <option value="Sedan" selected>Sedan</option>
+                            <option value="SUV">SUV</option>
+                            <option value="Truck">Truck</option>
+                            <option value="Sports Car">Sports Car</option>
+                            <option value="Luxury">Luxury Vehicle</option>
+                        </select>
                     </div>
-                    <select id="speeding">
-                        <option value="0" selected>No Tickets</option>
-                        <option value="1">Yes, I have tickets</option>
-                    </select>
-                </div>
 
-                <div class="filter-group">
-                    <div class="filter-label-wrapper">
-                        <label for="at_fault">At-Fault Accidents</label>
-                        <span class="tooltip-icon">?
-                            <span class="tooltip-text">At-fault accidents significantly impact your rates</span>
-                        </span>
+                    <div class="filter-group">
+                        <div class="filter-label-wrapper">
+                            <label for="mileage">Annual Mileage</label>
+                            <span class="tooltip-icon">?
+                                <span class="tooltip-text">Higher mileage can increase your rates</span>
+                            </span>
+                        </div>
+                        <select id="mileage">
+                            <option value="5000">Under 5,000 miles</option>
+                            <option value="10000" selected>5,000-10,000 miles</option>
+                            <option value="15000">10,000-15,000 miles</option>
+                            <option value="20000">15,000-20,000 miles</option>
+                            <option value="25000">Over 20,000 miles</option>
+                        </select>
                     </div>
-                    <select id="at_fault">
-                        <option value="0" selected>No Accidents</option>
-                        <option value="1">Yes, I had an accident</option>
-                    </select>
-                </div>
 
-                <div class="filter-group">
-                    <div class="filter-label-wrapper">
-                        <label for="dui">DUI/DWI</label>
-                        <span class="tooltip-icon">?
-                            <span class="tooltip-text">DUI violations can double or triple your insurance costs</span>
-                        </span>
+                    <div class="filter-group">
+                        <div class="filter-label-wrapper">
+                            <label for="speeding">Speeding Tickets</label>
+                            <span class="tooltip-icon">?
+                                <span class="tooltip-text">Recent tickets can increase your premium by 20-30%</span>
+                            </span>
+                        </div>
+                        <select id="speeding">
+                            <option value="0" selected>No Tickets</option>
+                            <option value="1">1 Ticket</option>
+                            <option value="2">2 Tickets</option>
+                            <option value="3">3+ Tickets</option>
+                        </select>
                     </div>
-                    <select id="dui">
-                        <option value="0" selected>No DUI</option>
-                        <option value="1">Yes, I have a DUI</option>
-                    </select>
+
+                    <div class="filter-group">
+                        <div class="filter-label-wrapper">
+                            <label for="at_fault">At-Fault Accidents</label>
+                            <span class="tooltip-icon">?
+                                <span class="tooltip-text">At-fault accidents significantly impact your rates</span>
+                            </span>
+                        </div>
+                        <select id="at_fault">
+                            <option value="0" selected>No Accidents</option>
+                            <option value="1">1 Accident</option>
+                            <option value="2">2+ Accidents</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <div class="filter-label-wrapper">
+                            <label for="dui">DUI/DWI</label>
+                            <span class="tooltip-icon">?
+                                <span class="tooltip-text">DUI violations can double or triple your insurance costs</span>
+                            </span>
+                        </div>
+                        <select id="dui">
+                            <option value="0" selected>No DUI</option>
+                            <option value="1">Yes, I have a DUI</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <div class="filter-label-wrapper">
+                            <label for="marital">Marital Status</label>
+                            <span class="tooltip-icon">?
+                                <span class="tooltip-text">Married drivers often receive lower rates</span>
+                            </span>
+                        </div>
+                        <select id="marital">
+                            <option value="Single" selected>Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Divorced">Divorced</option>
+                            <option value="Widowed">Widowed</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="rates-section">
+            <!-- Mr. Wizard AI Assistant -->
+            <div class="wizard-container" id="wizard-container">
+                <div class="wizard-badge">
+                    <div class="wizard-badge-dot"></div>
+                    Mr. Wizard
+                </div>
+
+                <div class="wizard-avatar" id="wizard-avatar" onclick="toggleChatHistory()">
+                    <div class="wizard-face">🧙‍♂️</div>
+                </div>
+
+                <!-- Professional Speech Bubble -->
+                <div class="wizard-speech-bubble" id="wizard-speech">
+                    <span>Hi! I'm Mr. Wizard. I'll help you find the best rates. 👋</span>
+                </div>
+
+                <!-- Chat History Toggle Button -->
+                <div class="chat-history-toggle" id="chat-toggle" onclick="toggleChatHistory()" title="View Chat History">
+                    💬
+                </div>
+
+                <div class="wizard-notification" id="wizard-notification" style="display: none;">!</div>
+            </div>
+
             <div class="rates-header">
                 <h3>Estimated Annual Rates</h3>
                 <p>Plano, TX (75023) • Sample rates for comparison</p>
@@ -1695,6 +2600,176 @@
             </div>
         </div>
 
+        <!-- How to Proceed Section -->
+        <div class="proceed-section">
+            <div class="proceed-header">
+                <h3>How would you like to proceed?</h3>
+                <p>Choose the option that works best for you</p>
+            </div>
+
+            <div class="proceed-recommendation" id="agent-recommendation">
+                <div class="recommendation-badge">
+                    <div class="recommendation-icon">💡</div>
+                    <div class="recommendation-content">
+                        <div class="recommendation-title">My Recommendation</div>
+                        <div class="recommendation-text" id="recommendation-text">
+                            Based on your profile, I recommend <strong>talking to an agent</strong>.
+                            With your driving history and coverage needs, a State Farm agent can help you find additional discounts and customize your policy.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="proceed-options">
+                <div class="proceed-option" onclick="selectOption('online')">
+                    <div class="proceed-option-icon">🌐</div>
+                    <div class="proceed-option-content">
+                        <div class="proceed-option-title">Finish Online</div>
+                        <div class="proceed-option-description">Get instant quotes from Progressive & Allstate</div>
+                    </div>
+                    <div class="proceed-option-arrow">→</div>
+                </div>
+
+                <div class="proceed-option recommended" onclick="selectOption('agent')" id="recommended-option">
+                    <div class="proceed-option-badge">Recommended</div>
+                    <div class="proceed-option-icon">💬</div>
+                    <div class="proceed-option-content">
+                        <div class="proceed-option-title">Talk to an Agent</div>
+                        <div class="proceed-option-description">Connect with Mike Smith from State Farm</div>
+                    </div>
+                    <div class="proceed-option-arrow">→</div>
+                </div>
+
+                <div class="proceed-option" onclick="selectOption('call')">
+                    <div class="proceed-option-icon">📞</div>
+                    <div class="proceed-option-content">
+                        <div class="proceed-option-title">Have Us Call You</div>
+                        <div class="proceed-option-description">Mike Smith will call you within 5 minutes</div>
+                    </div>
+                    <div class="proceed-option-arrow">→</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Next Steps Section (Hidden by default, shown based on user choice) -->
+        <div class="next-steps-section" id="next-steps-section" style="display: none;">
+            <div class="next-steps-header">
+                <h3>Your Next Step</h3>
+                <p id="next-steps-subtitle">Complete your quote with our recommended partner</p>
+            </div>
+
+            <!-- Online Option: Progressive & Allstate -->
+            <div class="next-steps-content" id="online-options" style="display: none;">
+                <div class="carrier-cards">
+                    <div class="carrier-card featured">
+                        <div class="carrier-badge">⭐ TOP RATED CARRIER</div>
+                        <div class="carrier-logo-large">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='20' font-weight='bold' fill='%230066CC'%3EPROGRESSIVE%3C/text%3E%3C/svg%3E" alt="Progressive">
+                        </div>
+                        <div class="carrier-card-title">Jen, we've found your best rate!</div>
+                        <div class="carrier-card-price">$89/month</div>
+                        <button class="carrier-cta-button primary" onclick="window.open('https://www.progressive.com', '_blank')">
+                            View My Rate
+                        </button>
+                        <div class="carrier-card-features">
+                            ✓ Instant online quote<br>
+                            ✓ Save up to 20%<br>
+                            ✓ Bundle & save more
+                        </div>
+                    </div>
+
+                    <div class="carrier-card">
+                        <div class="carrier-logo-large">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='20' font-weight='bold' fill='%23003DA5'%3EALLSTATE%3C/text%3E%3C/svg%3E" alt="Allstate">
+                        </div>
+                        <div class="carrier-card-title">Great coverage, great price</div>
+                        <div class="carrier-card-price">$95/month</div>
+                        <button class="carrier-cta-button secondary" onclick="window.open('https://www.allstate.com', '_blank')">
+                            Get Quote Online
+                        </button>
+                        <div class="carrier-card-features">
+                            ✓ Accident forgiveness<br>
+                            ✓ New car replacement<br>
+                            ✓ Deductible rewards
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agent Option: State Farm Agent -->
+            <div class="next-steps-content" id="agent-option" style="display: none;">
+                <div class="agent-card">
+                    <div class="agent-card-header">
+                        <div class="agent-photo">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23E31837'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='40' fill='white'%3EMS%3C/text%3E%3C/svg%3E" alt="Mike Smith">
+                        </div>
+                        <div class="agent-info">
+                            <div class="agent-name">Mike Smith</div>
+                            <div class="agent-company">State Farm Agent</div>
+                            <div class="agent-rating">⭐⭐⭐⭐⭐ 4.9 (127 reviews)</div>
+                        </div>
+                    </div>
+                    <div class="agent-card-body">
+                        <p class="agent-message">
+                            <strong>Hi! I'm Mike Smith, your local State Farm agent.</strong><br>
+                            I'm ready to help you find the perfect coverage for your needs.
+                        </p>
+                        <div class="agent-stats">
+                            <div class="agent-stat">
+                                <div class="agent-stat-number">15+</div>
+                                <div class="agent-stat-label">Years Experience</div>
+                            </div>
+                            <div class="agent-stat">
+                                <div class="agent-stat-number">500+</div>
+                                <div class="agent-stat-label">Happy Clients</div>
+                            </div>
+                            <div class="agent-stat">
+                                <div class="agent-stat-number">A+</div>
+                                <div class="agent-stat-label">BBB Rating</div>
+                            </div>
+                        </div>
+                        <button class="agent-cta-button" onclick="selectAgentAction()">
+                            <span id="agent-cta-text">📞 Talk to Mike Now</span>
+                        </button>
+                        <div class="agent-availability">
+                            🟢 Available now • Typical response: under 2 minutes
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call Option: State Farm Agent Will Call You -->
+            <div class="next-steps-content" id="call-option" style="display: none;">
+                <div class="agent-card callback">
+                    <div class="agent-card-header">
+                        <div class="agent-photo">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23E31837'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='40' fill='white'%3EMS%3C/text%3E%3C/svg%3E" alt="Mike Smith">
+                        </div>
+                        <div class="agent-info">
+                            <div class="agent-name">Mike Smith</div>
+                            <div class="agent-company">State Farm Agent</div>
+                            <div class="agent-rating">⭐⭐⭐⭐⭐ 4.9 (127 reviews)</div>
+                        </div>
+                    </div>
+                    <div class="agent-card-body">
+                        <p class="agent-message">
+                            <strong>Mike Smith will call you shortly!</strong><br>
+                            Please provide your phone number and Mike will reach out within the next 5 minutes to discuss your insurance needs.
+                        </p>
+                        <div class="callback-form">
+                            <input type="tel" class="callback-input" placeholder="(555) 123-4567" id="callback-phone">
+                            <button class="agent-cta-button" onclick="submitCallback()">
+                                📞 Request Call from Mike
+                            </button>
+                        </div>
+                        <div class="agent-availability">
+                            🟢 Mike is available now • Average callback time: 3 minutes
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="disclaimer">
             <div class="disclaimer-icon">ℹ️</div>
             <div>
@@ -1705,71 +2780,7 @@
         </div>
     </div>
 
-    <!-- Mr. Wizard AI Assistant -->
-    <div class="wizard-container" id="wizard-container">
-        <div class="wizard-avatar" id="wizard-avatar">
-            <div class="wizard-pulse"></div>
-            <div class="wizard-pulse" style="animation-delay: 1s;"></div>
-
-            <!-- Sparkles -->
-            <div class="wizard-sparkles">
-                <div class="sparkle"></div>
-                <div class="sparkle"></div>
-                <div class="sparkle"></div>
-                <div class="sparkle"></div>
-            </div>
-
-            <!-- Animated Wizard Character -->
-            <div class="wizard-character">
-                <!-- Purple Wizard Hat -->
-                <div class="wizard-hat"></div>
-
-                <!-- Head -->
-                <div class="wizard-head">
-                    <!-- Eyebrows -->
-                    <div class="wizard-eyebrow left"></div>
-                    <div class="wizard-eyebrow right"></div>
-
-                    <!-- Eyes -->
-                    <div class="wizard-eyes">
-                        <div class="wizard-eye">
-                            <div class="wizard-pupil"></div>
-                        </div>
-                        <div class="wizard-eye">
-                            <div class="wizard-pupil"></div>
-                        </div>
-                    </div>
-
-                    <!-- Nose -->
-                    <div class="wizard-nose"></div>
-
-                    <!-- Mustache -->
-                    <div class="wizard-mustache"></div>
-
-                    <!-- Mouth (Animated when talking) -->
-                    <div class="wizard-mouth" id="wizard-mouth">
-                        <div class="wizard-teeth"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Magic Wand -->
-            <div class="wizard-wand">✨</div>
-
-            <!-- Comic Book Speech Bubble -->
-            <div class="wizard-speech-bubble" id="wizard-speech">
-                <span>Click me! 👋</span>
-            </div>
-
-            <!-- Chat History Toggle Button -->
-            <div class="chat-history-toggle" id="chat-toggle" onclick="toggleChatHistory()" title="View Chat History">
-                💬
-            </div>
-
-            <div class="wizard-notification" id="wizard-notification" style="display: none;">!</div>
-        </div>
-
-        <div class="wizard-chat-window" id="wizard-chat-window">
+    <div class="wizard-chat-window" id="wizard-chat-window">
             <div class="wizard-chat-header">
                 <div class="wizard-chat-avatar">🧙‍♂️</div>
                 <div class="wizard-chat-info">
@@ -1846,6 +2857,20 @@
             { coverage: 'Full Coverage', age: 30, credit: 'Good', speeding: 0, at_fault: 1, dui: 0, premium: 3878 }
         ];
 
+        // Insurance companies with rate multipliers
+        const insuranceCompanies = [
+            { name: 'Progressive', multiplier: 0.92, logo: 'P' },
+            { name: 'GEICO', multiplier: 0.95, logo: 'G' },
+            { name: 'State Farm', multiplier: 1.00, logo: 'SF' },
+            { name: 'Allstate', multiplier: 1.05, logo: 'A' },
+            { name: 'USAA', multiplier: 0.88, logo: 'U' },
+            { name: 'Liberty Mutual', multiplier: 1.08, logo: 'LM' },
+            { name: 'Farmers', multiplier: 1.03, logo: 'F' },
+            { name: 'Nationwide', multiplier: 1.02, logo: 'N' },
+            { name: 'Travelers', multiplier: 1.06, logo: 'T' },
+            { name: 'American Family', multiplier: 0.98, logo: 'AF' }
+        ];
+
         // Filter rates based on selected criteria
         function calculateRates() {
             const age = parseInt(document.getElementById('age').value);
@@ -1865,27 +2890,32 @@
                 rate.dui === dui
             );
 
-            // If we have exact matches, use them
+            // Get base premium
+            let basePremium;
             if (matchingRates.length > 0) {
-                return matchingRates.map(rate => ({
-                    carrier: 'AAA SoCal',
-                    coverage: rate.coverage,
-                    annualPremium: rate.premium,
-                    monthlyPremium: Math.round(rate.premium / 12)
-                }));
+                basePremium = matchingRates[0].premium;
+            } else {
+                // Find closest match and estimate
+                const closestMatch = rateData.find(rate =>
+                    rate.age === age && rate.coverage === coverage
+                ) || rateData[0];
+                basePremium = closestMatch.premium;
             }
 
-            // Otherwise, find closest match and estimate
-            const closestMatch = rateData.find(rate =>
-                rate.age === age && rate.coverage === coverage
-            ) || rateData[0];
+            // Generate rates for all companies
+            const allRates = insuranceCompanies.map(company => {
+                const annualPremium = Math.round(basePremium * company.multiplier);
+                return {
+                    carrier: company.name,
+                    logo: company.logo,
+                    coverage: coverage,
+                    annualPremium: annualPremium,
+                    monthlyPremium: Math.round(annualPremium / 12)
+                };
+            });
 
-            return [{
-                carrier: 'AAA SoCal',
-                coverage: coverage,
-                annualPremium: closestMatch.premium,
-                monthlyPremium: Math.round(closestMatch.premium / 12)
-            }];
+            // Sort by price (lowest first) and return only top 3
+            return allRates.sort((a, b) => a.annualPremium - b.annualPremium).slice(0, 3);
         }
 
         // Get coverage badge HTML
@@ -1923,10 +2953,10 @@
                     `;
                 } else {
                     tbody.innerHTML = rates.map((rate, index) => `
-                        <tr style="animation: fadeIn 0.5s ease-out ${index * 0.1}s both;">
+                        <tr style="animation: fadeIn 0.5s ease-out ${index * 0.05}s both;">
                             <td>
                                 <div class="company-name">
-                                    <div class="company-logo">A</div>
+                                    <div class="company-logo">${rate.logo}</div>
                                     <div>
                                         ${rate.carrier}
                                         ${index === 0 ? '<div><span class="top-rated-badge">⭐ BEST RATE</span></div>' : ''}
@@ -1968,6 +2998,110 @@
         `;
         document.head.appendChild(style);
 
+        // Toggle filters function
+        function toggleFilters() {
+            const content = document.getElementById('filters-content');
+            const toggle = document.getElementById('filters-toggle');
+            const preview = document.getElementById('filters-preview');
+
+            content.classList.toggle('expanded');
+            toggle.classList.toggle('expanded');
+
+            if (content.classList.contains('expanded')) {
+                preview.classList.add('hidden');
+                showAgentMessage("Great! Let's customize your quote. Adjust any of these factors to see how they affect your rates. 📊");
+            } else {
+                preview.classList.remove('hidden');
+                updateFilterPreview();
+                showAgentMessage("Filters collapsed. Click again anytime to make changes! 👍");
+            }
+        }
+
+        // Update filter preview
+        function updateFilterPreview() {
+            const age = document.getElementById('age');
+            const coverage = document.getElementById('coverage');
+            const credit = document.getElementById('credit');
+            const vehicle = document.getElementById('vehicle');
+
+            document.getElementById('preview-age').textContent = age.options[age.selectedIndex].text;
+            document.getElementById('preview-coverage').textContent = coverage.options[coverage.selectedIndex].text;
+            document.getElementById('preview-credit').textContent = credit.options[credit.selectedIndex].text;
+            document.getElementById('preview-vehicle').textContent = vehicle.options[vehicle.selectedIndex].text;
+        }
+
+        // Update recommendation based on user profile
+        function updateRecommendation() {
+            const age = document.getElementById('age').value;
+            const coverage = document.getElementById('coverage').value;
+            const credit = document.getElementById('credit').value;
+            const speeding = document.getElementById('speeding').value;
+            const atFault = document.getElementById('at_fault').value;
+            const dui = document.getElementById('dui').value;
+
+            const recommendationText = document.getElementById('recommendation-text');
+            const recommendedOption = document.getElementById('recommended-option');
+
+            // Remove recommended class from all options
+            document.querySelectorAll('.proceed-option').forEach(opt => {
+                opt.classList.remove('recommended');
+                const badge = opt.querySelector('.proceed-option-badge');
+                if (badge) badge.remove();
+            });
+
+            // Determine recommendation based on profile
+            let recommendation = '';
+            let recommendedChoice = 'agent'; // default
+
+            // Complex cases -> Agent
+            if (dui === '1' || atFault === '2' || speeding === '3') {
+                recommendation = 'Based on your driving history, I recommend <strong>talking to an agent</strong>. Mike Smith can help you find specialized coverage and explain your options in detail.';
+                recommendedChoice = 'agent';
+            }
+            // Young drivers -> Agent
+            else if (age === '16' || age === '18' || age === '21') {
+                recommendation = 'As a young driver, I recommend <strong>talking to an agent</strong>. Mike Smith can help you find discounts like good student or defensive driving that online quotes might miss.';
+                recommendedChoice = 'agent';
+            }
+            // Premium coverage -> Agent
+            else if (coverage === 'Premium Coverage') {
+                recommendation = 'For premium coverage, I recommend <strong>talking to an agent</strong>. Mike Smith can customize your policy and ensure you have the right protection.';
+                recommendedChoice = 'agent';
+            }
+            // Clean record, standard coverage -> Online
+            else if (speeding === '0' && atFault === '0' && dui === '0' && (coverage === 'Full Coverage' || coverage === 'Standard Coverage')) {
+                recommendation = 'With your clean driving record, I recommend <strong>finishing online</strong>. You can get instant quotes from Progressive & Allstate and save time.';
+                recommendedChoice = 'online';
+            }
+            // Busy people -> Callback
+            else if (credit === 'Excellent' || credit === 'Good') {
+                recommendation = 'Based on your profile, I recommend <strong>having us call you</strong>. Mike Smith can quickly review your options and get you the best rate without the hassle.';
+                recommendedChoice = 'call';
+            }
+            // Default -> Agent
+            else {
+                recommendation = 'Based on your profile, I recommend <strong>talking to an agent</strong>. Mike Smith can help you find additional discounts and customize your policy.';
+                recommendedChoice = 'agent';
+            }
+
+            recommendationText.innerHTML = recommendation;
+
+            // Add recommended badge to the chosen option
+            const options = {
+                'online': document.querySelector('.proceed-option[onclick*="online"]'),
+                'agent': document.querySelector('.proceed-option[onclick*="agent"]'),
+                'call': document.querySelector('.proceed-option[onclick*="call"]')
+            };
+
+            if (options[recommendedChoice]) {
+                options[recommendedChoice].classList.add('recommended');
+                const badge = document.createElement('div');
+                badge.className = 'proceed-option-badge';
+                badge.textContent = 'Recommended';
+                options[recommendedChoice].insertBefore(badge, options[recommendedChoice].firstChild);
+            }
+        }
+
         // Track previous filter values for Mr. Wizard
         let previousFilters = {
             age: '30',
@@ -1975,7 +3109,10 @@
             credit: 'Good',
             speeding: '0',
             at_fault: '0',
-            dui: '0'
+            dui: '0',
+            vehicle: 'Sedan',
+            mileage: '10000',
+            marital: 'Single'
         };
 
         // Mr. Wizard AI responses based on filter changes
@@ -2060,6 +3197,9 @@
                 // Update rates
                 updateRatesTable();
 
+                // Update recommendation
+                updateRecommendation();
+
                 // Mr. Wizard responds to the change
                 if (newValue !== oldValue) {
                     setTimeout(() => {
@@ -2076,6 +3216,9 @@
         createFilterListener('speeding', 'speeding');
         createFilterListener('at_fault', 'at_fault');
         createFilterListener('dui', 'dui');
+        createFilterListener('vehicle', 'vehicle');
+        createFilterListener('mileage', 'mileage');
+        createFilterListener('marital', 'marital');
 
         // Mr. Wizard animation and movement
         let wizardMovementInterval;
@@ -2240,69 +3383,194 @@
             }
         }
 
+        // Show agent message function
+        function showAgentMessage(message, duration = 4000) {
+            const speech = document.getElementById('wizard-speech');
+            speech.innerHTML = message;
+            speech.classList.remove('thought');
+            speech.classList.add('active');
+
+            setTimeout(() => {
+                speech.classList.remove('active');
+            }, duration);
+        }
+
+        // Agent responses for different filter changes
+        const agentComments = {
+            age: {
+                '16': "Young driver! Rates might be higher, but we'll find you the best deal. 🚗",
+                '18': "New to driving? Let's find affordable coverage for you! 💪",
+                '21': "Good age bracket! You should see some competitive rates. 👍",
+                '25': "Great! You're in a favorable age range for insurance. ✨",
+                '30': "Perfect age for good rates! Let's see what we can find. 😊",
+                '40': "Excellent! Mature drivers often get better rates. 🌟",
+                '50': "Great experience level! This should help your rates. 👏",
+                '60': "Senior driver discounts may apply! 🎉",
+                '70': "Let's find you senior-friendly rates! 💚"
+            },
+            coverage: {
+                'Minimum Coverage': "Minimum coverage selected. Lower cost, but less protection. 🤔",
+                'Standard Coverage': "Standard coverage - a good balance! 👌",
+                'Full Coverage': "Full coverage! Maximum protection for your vehicle. 🛡️",
+                'Premium Coverage': "Premium coverage! Top-tier protection selected. ⭐"
+            },
+            credit: {
+                'Excellent': "Excellent credit! This will definitely help your rates. 🎯",
+                'Good': "Good credit score! You should qualify for competitive rates. 👍",
+                'Fair': "Fair credit. We'll still find you good options! 💪",
+                'Poor': "Don't worry! We work with all credit levels. 🤝"
+            },
+            vehicle: {
+                'Sedan': "Sedans typically have reasonable insurance costs. 🚙",
+                'SUV': "SUVs can be pricier to insure, but let's find you a deal! 🚗",
+                'Truck': "Trucks! Let's see what rates we can find. �",
+                'Sports Car': "Sports car! These can be expensive to insure. 🏎️",
+                'Luxury': "Luxury vehicle! Premium coverage recommended. ✨"
+            },
+            mileage: {
+                '5000': "Low mileage! This could save you money. 🎉",
+                '10000': "Average mileage - standard rates apply. 👍",
+                '15000': "Moderate mileage. Still good! 🚗",
+                '20000': "Higher mileage noted. Let's find you the best rate. 💪",
+                '25000': "High mileage! We'll work to keep your costs down. 🎯"
+            },
+            speeding: {
+                '0': "Clean driving record! This helps a lot. ✨",
+                '1': "One ticket noted. It may affect your rate slightly. 📝",
+                '2': "Multiple tickets. Let's find you affordable coverage. 💪",
+                '3': "Several tickets. We'll work to get you the best rate possible. 🤝"
+            },
+            at_fault: {
+                '0': "No accidents! Excellent driving history. 🌟",
+                '1': "One accident noted. We'll find you good coverage. 👍",
+                '2': "Multiple accidents. Don't worry, we have options! 💪"
+            },
+            dui: {
+                '0': "No DUI - great! This keeps your rates lower. ✅",
+                '1': "DUI noted. Rates will be higher, but we'll help you find coverage. 🤝"
+            },
+            marital: {
+                'Single': "Single status noted. 👤",
+                'Married': "Married! This often qualifies for discounts. 💑",
+                'Divorced': "Status updated. Let's find you great rates! 👍",
+                'Widowed': "Status noted. We're here to help. 🤝"
+            }
+        };
+
         function triggerWizardResponse(filterType, value) {
-            const notification = document.getElementById('wizard-notification');
             const speech = document.getElementById('wizard-speech');
 
-            notification.style.display = 'flex';
+            // Show immediate comment
+            const comment = agentComments[filterType]?.[value] || "Got it! Let me update your rates. 📊";
+            showAgentMessage(comment, 3000);
 
-            // Make wizard move around when responding
-            startWizardAdventure();
-
-            // Get appropriate response
-            let responses = wizardResponses[filterType][value];
-            if (!responses) return;
-
-            const mainResponse = responses[Math.floor(Math.random() * responses.length)];
-            const followUp = wizardFollowUps[Math.floor(Math.random() * wizardFollowUps.length)];
-
-            // Show comic-style speech bubbles during journey with mouth animation
-            const speechSequence = [
-                "Ooh, <span class='emphasis'>INTERESTING</span> choice! 🤔",
-                "Let me analyze this... 🔍",
-                "Calculating the best rates... 💭",
-                "I've got some insights! 💡"
-            ];
-
-            let speechIndex = 0;
-            const speechInterval = setInterval(() => {
-                if (speechIndex < speechSequence.length) {
-                    speech.innerHTML = speechSequence[speechIndex];
-                    speech.classList.remove('thought');
-                    speech.classList.add('active');
-
-                    // Animate mouth while speaking
-                    startMouthAnimation();
-
-                    setTimeout(() => {
-                        speech.classList.remove('active');
-                        stopMouthAnimation();
-                    }, 2500);
-
-                    speechIndex++;
-                } else {
-                    clearInterval(speechInterval);
-                }
-            }, 3000);
-
-            // Add messages to chat history
+            // After 3 seconds, ask how to proceed
             setTimeout(() => {
-                addWizardMessage(mainResponse, false);
+                showAgentMessage("How would you like to proceed? 🤔", 2000);
+            }, 3500);
 
-                // Show final speech bubble with mouth animation
-                speech.innerHTML = mainResponse.substring(0, 50) + "... 💬";
-                speech.classList.add('active');
-                startMouthAnimation();
+            // After 5.5 seconds, show options
+            setTimeout(() => {
+                showProceedOptions();
+            }, 5500);
+        }
 
+        // Show proceed options
+        function showProceedOptions() {
+            const speech = document.getElementById('wizard-speech');
+            speech.innerHTML = `
+                <div style="text-align: left; line-height: 1.8;">
+                    <strong>Choose an option:</strong><br>
+                    📞 <a href="#" onclick="selectOption('call'); return false;" style="color: #6CC24A; text-decoration: underline;">Have us call you</a><br>
+                    💬 <a href="#" onclick="selectOption('agent'); return false;" style="color: #6CC24A; text-decoration: underline;">Talk to an agent</a><br>
+                    🌐 <a href="#" onclick="selectOption('online'); return false;" style="color: #6CC24A; text-decoration: underline;">Finish online</a>
+                </div>
+            `;
+            speech.classList.add('active');
+        }
+
+        // Handle option selection
+        function selectOption(option) {
+            const speech = document.getElementById('wizard-speech');
+            const nextStepsSection = document.getElementById('next-steps-section');
+            const onlineOptions = document.getElementById('online-options');
+            const agentOption = document.getElementById('agent-option');
+            const callOption = document.getElementById('call-option');
+            const subtitle = document.getElementById('next-steps-subtitle');
+
+            // Hide all options first
+            onlineOptions.style.display = 'none';
+            agentOption.style.display = 'none';
+            callOption.style.display = 'none';
+
+            if (option === 'call') {
+                showAgentMessage("Great! Mike Smith from State Farm will call you. 📞", 3000);
+                subtitle.textContent = "Mike Smith will call you shortly";
+                callOption.style.display = 'block';
+                nextStepsSection.style.display = 'block';
+
+                // Scroll to next steps
                 setTimeout(() => {
-                    speech.classList.remove('active');
-                    stopMouthAnimation();
-                }, 3000);
-            }, 12000);
+                    nextStepsSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 500);
 
+            } else if (option === 'agent') {
+                showAgentMessage("Connecting you with Mike Smith from State Farm... 💬", 3000);
+                subtitle.textContent = "Your dedicated State Farm agent is ready";
+                agentOption.style.display = 'block';
+                nextStepsSection.style.display = 'block';
+
+                // Scroll to next steps
+                setTimeout(() => {
+                    nextStepsSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 500);
+
+            } else if (option === 'online') {
+                showAgentMessage("Perfect! Here are your best online options. 🌐", 3000);
+                subtitle.textContent = "Complete your quote online with our top-rated partners";
+                onlineOptions.style.display = 'block';
+                nextStepsSection.style.display = 'block';
+
+                // Scroll to next steps
+                setTimeout(() => {
+                    nextStepsSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 500);
+            }
+        }
+
+        // Agent action (talk to agent)
+        function selectAgentAction() {
+            showAgentMessage("Connecting you with Mike now... 📞", 3000);
             setTimeout(() => {
-                addWizardMessage(followUp, false, true);
-            }, 14000);
+                alert("In a real implementation, this would initiate a call or chat with Mike Smith from State Farm.");
+            }, 1000);
+        }
+
+        // Submit callback request
+        function submitCallback() {
+            const phone = document.getElementById('callback-phone').value;
+            if (!phone || phone.length < 10) {
+                alert("Please enter a valid phone number");
+                return;
+            }
+
+            showAgentMessage("Perfect! Mike will call you at " + phone + " within 5 minutes. 📞", 5000);
+
+            // In real implementation, this would submit to backend
+            setTimeout(() => {
+                document.getElementById('call-option').innerHTML = `
+                    <div style="text-align: center; padding: 40px;">
+                        <div style="font-size: 48px; margin-bottom: 16px;">✅</div>
+                        <h3 style="color: #6CC24A; margin-bottom: 12px;">Callback Requested!</h3>
+                        <p style="color: #454545; font-size: 15px;">
+                            Mike Smith will call you at <strong>${phone}</strong> within the next 5 minutes.
+                        </p>
+                        <p style="color: #767676; font-size: 13px; margin-top: 16px;">
+                            Please keep your phone nearby. Mike is excited to help you find the perfect coverage!
+                        </p>
+                    </div>
+                `;
+            }, 1000);
         }
 
         function addWizardMessage(text, isUser = false, includeQuickReplies = false) {
@@ -2388,6 +3656,87 @@
 
         // Initial render
         updateRatesTable();
+        updateRecommendation();
+
+        // Make Mr. Wizard draggable
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+        let xOffset = 0;
+        let yOffset = 0;
+
+        const wizardContainer = document.getElementById('wizard-container');
+
+        wizardContainer.addEventListener('mousedown', dragStart);
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', dragEnd);
+
+        // Touch events for mobile
+        wizardContainer.addEventListener('touchstart', dragStart);
+        document.addEventListener('touchmove', drag);
+        document.addEventListener('touchend', dragEnd);
+
+        function dragStart(e) {
+            // Don't drag if clicking on chat toggle or avatar (for opening chat)
+            if (e.target.id === 'chat-toggle' || e.target.closest('#chat-toggle')) {
+                return;
+            }
+
+            if (e.type === 'touchstart') {
+                initialX = e.touches[0].clientX - xOffset;
+                initialY = e.touches[0].clientY - yOffset;
+            } else {
+                initialX = e.clientX - xOffset;
+                initialY = e.clientY - yOffset;
+            }
+
+            if (e.target === wizardContainer || e.target.closest('.wizard-badge') || e.target.closest('.wizard-avatar')) {
+                isDragging = true;
+                wizardContainer.classList.add('dragging');
+            }
+        }
+
+        function drag(e) {
+            if (isDragging) {
+                e.preventDefault();
+
+                if (e.type === 'touchmove') {
+                    currentX = e.touches[0].clientX - initialX;
+                    currentY = e.touches[0].clientY - initialY;
+                } else {
+                    currentX = e.clientX - initialX;
+                    currentY = e.clientY - initialY;
+                }
+
+                xOffset = currentX;
+                yOffset = currentY;
+
+                // Keep wizard within viewport bounds
+                const rect = wizardContainer.getBoundingClientRect();
+                const maxX = window.innerWidth - rect.width;
+                const maxY = window.innerHeight - rect.height;
+
+                xOffset = Math.max(0, Math.min(xOffset, maxX));
+                yOffset = Math.max(0, Math.min(yOffset, maxY));
+
+                setTranslate(xOffset, yOffset, wizardContainer);
+            }
+        }
+
+        function dragEnd(e) {
+            if (isDragging) {
+                initialX = currentX;
+                initialY = currentY;
+                isDragging = false;
+                wizardContainer.classList.remove('dragging');
+            }
+        }
+
+        function setTranslate(xPos, yPos, el) {
+            el.style.transform = `translate(${xPos}px, ${yPos}px)`;
+        }
 
         // Welcome message from Mr. Wizard after 3 seconds
         setTimeout(() => {
@@ -2469,6 +3818,62 @@
             lastScrollTop = st <= 0 ? 0 : st;
         });
     </script>
+
+        </div>
+    </div>
+
+    <!-- LendingTree Footer -->
+    <footer class="lt-footer">
+        <div class="lt-footer-content">
+            <div class="lt-footer-grid">
+                <div class="lt-footer-column">
+                    <div class="lt-footer-logo">LendingTree</div>
+                    <p style="color: #B8BCC4; font-size: 14px; line-height: 1.6;">
+                        When banks compete, you win. Compare rates and save money on loans, insurance, and more.
+                    </p>
+                </div>
+
+                <div class="lt-footer-column">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="#">Personal Loans</a></li>
+                        <li><a href="#">Home Loans</a></li>
+                        <li><a href="#">Auto Loans</a></li>
+                        <li><a href="#">Credit Cards</a></li>
+                        <li><a href="#">Insurance</a></li>
+                    </ul>
+                </div>
+
+                <div class="lt-footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Investors</a></li>
+                    </ul>
+                </div>
+
+                <div class="lt-footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Reviews</a></li>
+                        <li><a href="#">Learning Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="lt-footer-bottom">
+                <p>© 2026 LendingTree, LLC. All Rights Reserved. | NMLS #1136 | Equal Housing Opportunity</p>
+                <p style="margin-top: 8px;">LendingTree, LLC is a Marketing Lead Generator and is a Duly Licensed Mortgage Broker.</p>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
 
