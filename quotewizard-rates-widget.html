@@ -1073,35 +1073,57 @@
         /* Mr. Wizard Chat Assistant */
         .wizard-container {
             position: fixed;
-            top: 20px;
-            right: 32px;
+            bottom: 24px;
+            right: 24px;
             z-index: 1000;
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
-            gap: 12px;
+            align-items: center;
+            gap: 16px;
             cursor: move;
             user-select: none;
+            animation: wizardEntrance 1s ease-out;
+        }
+
+        @keyframes wizardEntrance {
+            0% {
+                transform: translateY(100px) scale(0.5);
+                opacity: 0;
+            }
+            60% {
+                transform: translateY(-10px) scale(1.05);
+            }
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
         }
 
         .wizard-container.dragging {
-            opacity: 0.8;
+            opacity: 0.9;
             cursor: grabbing;
+            transform: scale(1.05);
         }
 
         .wizard-avatar {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #0069BA 0%, #0052A3 100%);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0, 105, 186, 0.25), 0 0 0 3px rgba(0, 105, 186, 0.1);
-            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4), 0 0 0 4px rgba(102, 126, 234, 0.2);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
             overflow: visible;
+            animation: wizardFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes wizardFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         .wizard-avatar::before {
@@ -1110,43 +1132,61 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            border: 2px solid rgba(0, 105, 186, 0.3);
-            animation: subtleRipple 3s ease-out infinite;
+            border: 3px solid rgba(102, 126, 234, 0.4);
+            animation: magicRipple 2s ease-out infinite;
         }
 
-        @keyframes subtleRipple {
-            0% { transform: scale(1); opacity: 0.5; }
-            100% { transform: scale(1.4); opacity: 0; }
+        @keyframes magicRipple {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.6); opacity: 0; }
         }
 
         .wizard-avatar:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 105, 186, 0.35), 0 0 0 3px rgba(0, 105, 186, 0.15);
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.6), 0 0 0 6px rgba(102, 126, 234, 0.3);
+            animation: none;
         }
 
         .wizard-avatar:active {
-            transform: translateY(0);
+            transform: translateY(-4px) scale(1.05);
         }
 
         .wizard-face {
-            font-size: 24px;
+            font-size: 40px;
             position: relative;
+            animation: wizardWink 5s ease-in-out infinite;
+        }
+
+        @keyframes wizardWink {
+            0%, 90%, 100% { transform: scale(1); }
+            95% { transform: scale(1.2) rotate(5deg); }
         }
 
         .wizard-badge {
-            background: white;
-            padding: 8px 14px;
-            border-radius: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            font-size: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 10px 18px;
+            border-radius: 24px;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+            font-size: 14px;
             font-weight: 700;
-            color: #101F30;
+            color: #FFFFFF;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             white-space: nowrap;
-            border: 1px solid #F1F3F3;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: badgePulse 2s ease-in-out infinite;
             cursor: grab;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3); }
+            50% { transform: scale(1.05); box-shadow: 0 6px 16px rgba(102, 126, 234, 0.5); }
+        }
+
+        .wizard-badge:hover {
+            animation: none;
+            transform: scale(1.08);
         }
 
         .wizard-badge:active {
@@ -1154,16 +1194,56 @@
         }
 
         .wizard-badge-dot {
-            width: 6px;
-            height: 6px;
-            background: #52B947;
+            width: 8px;
+            height: 8px;
+            background: #FFD700;
             border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
+            animation: sparkle 1.5s ease-in-out infinite;
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.3); }
         }
 
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
+        }
+
+        /* Magic Sparkles */
+        .wizard-sparkles {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            pointer-events: none;
+        }
+
+        .sparkle {
+            position: absolute;
+            font-size: 20px;
+            animation: sparkleFloat 3s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes sparkleFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+                transform: translateY(-10px) rotate(180deg) scale(1);
+            }
+            80% {
+                opacity: 1;
+                transform: translateY(-20px) rotate(360deg) scale(1);
+            }
+            100% {
+                transform: translateY(-30px) rotate(540deg) scale(0);
+                opacity: 0;
+            }
         }
 
         /* Wizard Hat - Disney Quality */
@@ -1701,28 +1781,29 @@
 
 
 
-        /* Professional Speech Bubble */
+        /* Engaging Speech Bubble */
         .wizard-speech-bubble {
             position: absolute;
             bottom: 120%;
             left: 50%;
-            transform: translateX(-50%) translateY(8px);
-            background: white;
-            padding: 14px 18px;
-            border-radius: 8px;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
-            font-size: 13px;
-            font-weight: 400;
+            transform: translateX(-50%) translateY(8px) scale(0.9);
+            background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FF 100%);
+            padding: 18px 22px;
+            border-radius: 16px;
+            border: 3px solid #667eea;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.25), 0 0 0 1px rgba(102, 126, 234, 0.1);
+            font-size: 15px;
+            font-weight: 500;
             color: #101F30;
-            min-width: 200px;
-            max-width: 340px;
+            min-width: 260px;
+            max-width: 380px;
             text-align: left;
             opacity: 0;
             pointer-events: none;
             z-index: 1001;
             font-family: 'Lato', sans-serif;
-            line-height: 1.6;
+            line-height: 1.7;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         /* Subtle tail pointing to agent */
@@ -1794,8 +1875,15 @@
 
         .wizard-speech-bubble.active {
             opacity: 1;
-            transform: translateX(-50%) translateY(0);
+            transform: translateX(-50%) translateY(0) scale(1);
             pointer-events: auto;
+            animation: bubbleBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes bubbleBounce {
+            0% { transform: translateX(-50%) translateY(20px) scale(0.8); opacity: 0; }
+            60% { transform: translateX(-50%) translateY(-5px) scale(1.05); }
+            100% { transform: translateX(-50%) translateY(0) scale(1); opacity: 1; }
         }
 
         /* Emphasis effects for speech */
@@ -1829,26 +1917,37 @@
         /* Chat history toggle button */
         .chat-history-toggle {
             position: absolute;
-            top: -15px;
-            right: -15px;
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            top: -16px;
+            right: -16px;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #52B947 0%, #469E3D 100%);
             border-radius: 50%;
             border: 3px solid white;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 6px 20px rgba(82, 185, 71, 0.5);
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            transition: all 0.3s ease;
+            font-size: 24px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             z-index: 10;
+            animation: chatBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes chatBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); box-shadow: 0 8px 24px rgba(82, 185, 71, 0.7); }
         }
 
         .chat-history-toggle:hover {
-            transform: scale(1.15) rotate(15deg);
-            box-shadow: 0 6px 16px rgba(102, 126, 234, 0.6);
+            transform: scale(1.3) rotate(20deg);
+            box-shadow: 0 10px 28px rgba(82, 185, 71, 0.8);
+            animation: none;
+        }
+
+        .chat-history-toggle:active {
+            transform: scale(1.15);
         }
 
         .chat-history-toggle:active {
@@ -2551,6 +2650,14 @@
         <div class="rates-section">
             <!-- Mr. Wizard AI Assistant -->
             <div class="wizard-container" id="wizard-container">
+                <!-- Magic Sparkles -->
+                <div class="wizard-sparkles">
+                    <div class="sparkle" style="top: 10%; left: 10%; animation-delay: 0s;">✨</div>
+                    <div class="sparkle" style="top: 20%; right: 15%; animation-delay: 0.5s;">⭐</div>
+                    <div class="sparkle" style="bottom: 30%; left: 5%; animation-delay: 1s;">💫</div>
+                    <div class="sparkle" style="bottom: 15%; right: 10%; animation-delay: 1.5s;">✨</div>
+                </div>
+
                 <div class="wizard-badge">
                     <div class="wizard-badge-dot"></div>
                     Mr. Wizard
@@ -2560,13 +2667,13 @@
                     <div class="wizard-face">🧙‍♂️</div>
                 </div>
 
-                <!-- Professional Speech Bubble -->
+                <!-- Engaging Speech Bubble -->
                 <div class="wizard-speech-bubble" id="wizard-speech">
-                    <span>Hi! I'm Mr. Wizard. I'll help you find the best rates. 👋</span>
+                    <span><strong>Hi! I'm Mr. Wizard.</strong> 🧙‍♂️<br>I'll help you find the best insurance rates! Click me to chat! 👋</span>
                 </div>
 
                 <!-- Chat History Toggle Button -->
-                <div class="chat-history-toggle" id="chat-toggle" onclick="toggleChatHistory()" title="View Chat History">
+                <div class="chat-history-toggle" id="chat-toggle" onclick="toggleChatHistory()" title="Chat with Mr. Wizard">
                     💬
                 </div>
 
